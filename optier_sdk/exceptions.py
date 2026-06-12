@@ -1,20 +1,128 @@
 """
-OPTIER SDK Exception Definitions.
+optier_sdk.exceptions
+=====================
 
-IMPORTANT:
+Custom exception hierarchy for the OPTIER SDK.
 
-This file is intentionally minimal during the early
-development stages.
-
-Exception classes will be added only after they have
-been reviewed against the OEM documentation and mapped
-inside docs/sdk/exception_mapping.md.
+SDK users should work with Python exceptions instead of OEM
+error codes or raw HTTP responses.
 """
 
+from __future__ import annotations
 
-class OptierError(Exception):
+
+class OptierSDKError(Exception):
     """
-    Base exception for the entire OPTIER SDK.
+    Base exception for all SDK errors.
     """
 
-    pass
+
+# ------------------------------------------------------------------
+# Connection / Authentication
+# ------------------------------------------------------------------
+
+
+class ConnectionError(OptierSDKError):
+    """
+    Unable to communicate with the device.
+    """
+
+
+class AuthenticationError(OptierSDKError):
+    """
+    Authentication failed.
+    """
+
+
+class VerifyFailedError(AuthenticationError):
+    """
+    Wrong username or password.
+    """
+
+
+class LoginBlockedError(AuthenticationError):
+    """
+    Login blocked due to repeated failures.
+    """
+
+
+class PermissionDeniedError(AuthenticationError):
+    """
+    User has insufficient permission.
+    """
+
+
+class BlacklistedIPError(AuthenticationError):
+    """
+    Client IP is blacklisted.
+    """
+
+
+class DeviceRebootingError(AuthenticationError):
+    """
+    Device is rebooting.
+    """
+
+
+class SessionExpiredError(AuthenticationError):
+    """
+    Session has expired.
+    """
+
+
+class InvalidTokenError(AuthenticationError):
+    """
+    CSRF token or session token is invalid.
+    """
+
+
+# ------------------------------------------------------------------
+# Device Errors
+# ------------------------------------------------------------------
+
+
+class DeviceBusyError(OptierSDKError):
+    """
+    Device is busy.
+    """
+
+
+class OperationFailedError(OptierSDKError):
+    """
+    Device operation failed.
+    """
+
+
+class ParameterError(OptierSDKError):
+    """
+    Invalid parameter supplied.
+    """
+
+
+class UnsupportedError(OptierSDKError):
+    """
+    Feature not supported by device.
+    """
+
+
+class SaveFailedError(OptierSDKError):
+    """
+    Failed to save configuration.
+    """
+
+
+# ------------------------------------------------------------------
+# Response Errors
+# ------------------------------------------------------------------
+
+
+class InvalidResponseError(OptierSDKError):
+    """
+    Device returned an unexpected response.
+    """
+
+
+class JsonDecodeError(InvalidResponseError):
+    """
+    Device returned invalid JSON.
+    """

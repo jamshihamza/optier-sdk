@@ -1,24 +1,34 @@
 # Python
+
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
 
 # Virtual Environment
+
 .venv/
 venv/
 env/
 
+# VS Code
+
+.vscode/
+
 # Distribution
+
 build/
 dist/
 *.egg-info/
 
-# Pytest
+# pytest
+
 .pytest_cache/
 
-# VS Code
-.vscode/
+# mypy
 
-# Logs
-*.log
+.mypy_cache/
+
+# OS
+
+Thumbs.db
+.DS_Store
