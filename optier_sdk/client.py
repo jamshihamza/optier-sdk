@@ -25,6 +25,7 @@ from .core.general import GeneralManager
 from .core.network_state import NetworkStateManager
 from .core.record_info import RecordInfoManager
 from .core.channel_info import SystemChannelInfoManager
+from .core.output import OutputManager
 
 from .constants import (
     CSRF_HEADER_NAME,
@@ -145,7 +146,9 @@ class Camera:
         self.network_state = NetworkStateManager(self)
         self.record_info = RecordInfoManager(self)
         self.channel_info = SystemChannelInfoManager(self)
-        
+        self.output = OutputManager(self)
+
+
     # ---------------------------------------------------------
     # Properties
     # ---------------------------------------------------------
