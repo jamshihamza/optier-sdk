@@ -14,3 +14,10 @@
 | Network State | ✅ | Complete |
 | Record Information | ✅ | Complete |
 | DefoggingFan | ✅ | Unsupported (not_found) |
+
+
+
+DefoggingFan
+Status: Unsupported on tested firmware
+Result: not_found
+Verified: Yes

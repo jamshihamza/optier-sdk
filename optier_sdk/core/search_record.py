@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 
-class OutputManager:
+class SearchRecordManager:
     """
-    System Output APIs.
+    Playback Search Record APIs.
     """
 
     def __init__(
@@ -16,7 +16,7 @@ class OutputManager:
     def range(self) -> dict:
 
         response = self._client._request(
-            "/API/SystemConfig/Output/Range",
+            "/API/Playback/SearchRecord/Range",
             {
                 "version": "1.0",
                 "data": {},
@@ -28,13 +28,16 @@ class OutputManager:
             {},
         )
 
-    def get(self) -> dict:
+    def search(
+        self,
+        **kwargs,
+    ) -> dict:
 
         response = self._client._request(
-            "/API/SystemConfig/Output/Get",
+            "/API/Playback/SearchRecord/Search",
             {
                 "version": "1.0",
-                "data": {},
+                "data": kwargs,
             },
         )
 
@@ -42,16 +45,3 @@ class OutputManager:
             "data",
             {},
         )
-
-    def set(
-    self,
-    **kwargs,
-            ) -> None:
-
-        self._client._request(
-        "/API/SystemConfig/Output/Set",
-        {
-            "version": "1.0",
-            "data": kwargs,
-        },
-    )
