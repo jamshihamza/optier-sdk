@@ -1,15 +1,12 @@
-| Module       | Status      | Tested |
-| ------------ | ----------- | ------ |
-| Login        | ✅           | ✅      |
-| DeviceInfo   | ✅           | ✅      |
-| ChannelInfo  | ✅           | ✅      |
-| Snapshot     | ✅           | ✅      |
-| DateTime     | ✅           | ✅      |
-| Log          | ✅           | ✅      |
-| DefoggingFan | ❌ not_found | ✅      |
-| Encode       | ⏳           | ❌      |
-| OSD          | ⏳           | ❌      |
-| RTSP         | ⏳           | ❌      |
-| NTP          | ⏳           | ❌      |
-| LPR          | ⏳           | ❌      |
-| Face         | ⏳           | ❌      |
+| Module             | Status        | Tested |
+| ------------------ | ------------- | ------ |
+| Login              | ✅             | ✅      |
+| Heartbeat          | ✅             | ✅      |
+| DeviceInfo         | ✅             | ✅      |
+| ChannelInfo        | ✅             | ✅      |
+| Snapshot           | ✅             | ✅      |
+| DateTime           | ✅             | ✅      |
+| Log Search         | ✅             | ✅      |
+| System Information | ✅             | ✅      |
+| NTP                | ✅             | ✅      |
+| DefoggingFan       | ❌ `not_found` | ✅      |

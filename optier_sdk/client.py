@@ -22,7 +22,7 @@ from .core.defogging_fan import DefoggingFanManager
 from .core.log import LogManager
 from .core.system_info import SystemInfoManager
 from .core.ntp import NTPManager
-
+from .core.general import GeneralManager
 
 
 
@@ -132,20 +132,17 @@ class Camera:
         #
 
         self.login = LoginManager(self)
-
         self.system = SystemManager(self)
-
         self.snapshot = SnapshotManager(self)
-
         self.datetime = DateTimeManager(self)
 
         self.defogging_fan = DefoggingFanManager(self)
 
         self.log = LogManager(self)
-
         self.system_info = SystemInfoManager(self)
-
         self.ntp = NTPManager(self)
+        self.general=GeneralManager(self)
+        
     # ---------------------------------------------------------
     # Properties
     # ---------------------------------------------------------
