@@ -1,13 +1,16 @@
-| Module             | Status        | Tested |
-| ------------------ | ------------- | ------ |
-| Login              | ✅             | ✅      |
-| Heartbeat          | ✅             | ✅      |
-| DeviceInfo         | ✅             | ✅      |
-| ChannelInfo        | ✅             | ✅      |
-| Snapshot           | ✅             | ✅      |
-| DateTime           | ✅             | ✅      |
-| Log Search         | ✅             | ✅      |
-| System Information | ✅             | ✅      |
-| NTP                | ✅             | ✅      |
-| DefoggingFan       | ❌ `not_found` | ✅      |
-  General            | ✅             | ✅      |
+# OPTIER SDK Progress
+
+| Module | Tested | Status |
+|---------|--------|--------|
+| Login | ✅ | Complete |
+| DeviceInfo | ✅ | Complete |
+| ChannelInfo | ✅ | Complete |
+| Snapshot | ✅ | Complete |
+| DateTime | ✅ | Complete |
+| Log | ✅ | Complete |
+| SystemInfo | ✅ | Complete |
+| NTP | ✅ | Complete |
+| General | ✅ | Complete |
+| Network State | ✅ | Complete |
+| Record Information | ✅ | Complete |
+| DefoggingFan | ✅ | Unsupported (not_found) |
