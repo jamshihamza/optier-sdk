@@ -10,3 +10,4 @@
 | System Information | ✅             | ✅      |
 | NTP                | ✅             | ✅      |
 | DefoggingFan       | ❌ `not_found` | ✅      |
+  General            | ✅             | ✅      |

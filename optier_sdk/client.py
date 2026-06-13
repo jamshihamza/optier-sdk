@@ -13,7 +13,6 @@ from typing import Any
 
 import requests
 from requests.auth import HTTPDigestAuth
-
 from .core.login import LoginManager
 from .core.system import SystemManager
 from .core.snapshot import SnapshotManager
@@ -23,8 +22,8 @@ from .core.log import LogManager
 from .core.system_info import SystemInfoManager
 from .core.ntp import NTPManager
 from .core.general import GeneralManager
-
-
+from .core.network_state import NetworkStateManager
+from .core.record_info import RecordInfoManager
 
 from .constants import (
     CSRF_HEADER_NAME,
@@ -142,6 +141,8 @@ class Camera:
         self.system_info = SystemInfoManager(self)
         self.ntp = NTPManager(self)
         self.general=GeneralManager(self)
+        self.network_state = NetworkStateManager(self)
+        self.record_info = RecordInfoManager(self)
         
     # ---------------------------------------------------------
     # Properties
