@@ -5,16 +5,17 @@ Core Camera client implementation.
 """
 
 from __future__ import annotations
-from .core.device import DeviceManager
-from .core.login import LoginManager
-from .core.system import SystemManager
 
+import logging
 import threading
 from copy import deepcopy
 from typing import Any
-import logging
+
 import requests
 from requests.auth import HTTPDigestAuth
+
+from .core.login import LoginManager
+from .core.system import SystemManager
 
 from .constants import (
     CSRF_HEADER_NAME,
@@ -68,37 +69,66 @@ class Camera:
 
         self.timeout = timeout
         self.oem_type = oem_type
+
         self._logger = logger
+
         self.scheme = "https" if https else "http"
 
         self.base_url = (
             f"{self.scheme}://{self.host}:{self.port}"
         )
 
+        #
         # HTTP session
+        #
+
         self._session: requests.Session | None = None
 
-        # csrf token
+        #
+        # CSRF token
+        #
+
         self._csrf_token: str | None = None
 
-        # state
-        self._connected: bool = False
+        #
+        # Connection state
+        #
 
-        # synchronization
+        self._connected = False
+
+        #
+        # Thread synchronization
+        #
+
         self._lock = threading.RLock()
 
-        # heartbeat
-        self._heartbeat_interval = DEFAULT_HEARTBEAT_INTERVAL
+        #
+        # Heartbeat
+        #
 
-        self._heartbeat_thread: threading.Thread | None = None
+        self._heartbeat_interval = (
+            DEFAULT_HEARTBEAT_INTERVAL
+        )
 
-        self._heartbeat_stop_event = threading.Event()
-        self.device = DeviceManager(self)
-        self.login= LoginManager(self)
-        self.system= SystemManager(self)
-    # ----------------------------------------------------------
+        self._heartbeat_thread: (
+            threading.Thread | None
+        ) = None
+
+        self._heartbeat_stop_event = (
+            threading.Event()
+        )
+
+        #
+        # API Managers
+        #
+
+        self.login = LoginManager(self)
+
+        self.system = SystemManager(self)
+
+    # ---------------------------------------------------------
     # Properties
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
 
     @property
     def connected(self) -> bool:
@@ -107,9 +137,9 @@ class Camera:
         """
         return self._connected
 
-    # ----------------------------------------------------------
-    # Context manager support
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
+    # Context manager
+    # ---------------------------------------------------------
 
     def __enter__(self) -> "Camera":
 
@@ -126,13 +156,13 @@ class Camera:
 
         self.disconnect()
 
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
     # Public API
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
 
     def connect(self) -> None:
         """
-        Login to device.
+        Connect to the device.
         """
 
         with self._lock:
@@ -150,7 +180,7 @@ class Camera:
 
     def disconnect(self) -> None:
         """
-        Logout and release resources.
+        Logout and release all resources.
         """
 
         with self._lock:
@@ -176,16 +206,13 @@ class Camera:
 
     close = disconnect
 
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
     # Login
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
 
     def _login(self) -> None:
         """
-        Perform Digest login.
-
-        Session cookies are managed automatically
-        by requests.Session.
+        Perform Digest authentication.
         """
 
         if self._session is None:
@@ -196,7 +223,6 @@ class Camera:
         payload = deepcopy(DEFAULT_LOGIN_PAYLOAD)
 
         if self.oem_type is not None:
-
             payload["data"]["oem_type"] = self.oem_type
 
         try:
@@ -218,18 +244,17 @@ class Camera:
             ) from exc
 
         try:
-
             body = response.json()
 
         except Exception:
-
             body = None
 
         if body is not None:
 
-            result = body.get(JSON_KEY_RESULT)
-
-            if result != JSON_RESULT_SUCCESS:
+            if (
+                body.get(JSON_KEY_RESULT)
+                != JSON_RESULT_SUCCESS
+            ):
 
                 error_code = body.get(
                     JSON_KEY_ERROR_CODE
@@ -240,11 +265,13 @@ class Camera:
                     "Login failed.",
                 )
 
-                exc_type = get_exception_class(
-                    error_code
+                exception_type = (
+                    get_exception_class(
+                        error_code
+                    )
                 )
 
-                raise exc_type(reason)
+                raise exception_type(reason)
 
         self._csrf_token = response.headers.get(
             CSRF_HEADER_NAME
@@ -263,16 +290,14 @@ class Camera:
                 "Content-Type": JSON_CONTENT_TYPE,
             }
         )
-            # ----------------------------------------------------------
+
+    # ---------------------------------------------------------
     # Logout
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
 
     def _logout(self) -> None:
         """
         Logout from the device.
-
-        Logout failures are ignored because the caller is
-        intentionally closing the session anyway.
         """
 
         if self._session is None:
@@ -289,38 +314,43 @@ class Camera:
         except Exception as exc:
 
             if self._logger is not None:
-                self._logger.warning ("Heartbeat failed: %s",exc)
-            
 
-    # ----------------------------------------------------------
+                self._logger.warning(
+                    "Logout failed: %s",
+                    exc,
+                )
+
+    # ---------------------------------------------------------
     # Error handling
-    # ----------------------------------------------------------
-def _is_session_error(
-    self,
-    response_json: dict[str, Any],
-) -> bool:
+    # ---------------------------------------------------------
 
-    error_code = response_json.get(
-        JSON_KEY_ERROR_CODE
-    )
+    def _is_session_error(
+        self,
+        response_json: dict[str, Any],
+    ) -> bool:
 
-    return error_code in (
-        "expired",
-        "no_login",
-        "token_invalid",
-    )
+        error_code = response_json.get(
+            JSON_KEY_ERROR_CODE
+        )
+
+        return error_code in (
+            "expired",
+            "no_login",
+            "token_invalid",
+        )
 
     def _raise_for_error(
         self,
         response_json: dict[str, Any],
     ) -> None:
         """
-        Raise mapped Python exception from OEM response.
+        Raise mapped Python exception.
         """
 
-        result = response_json.get(JSON_KEY_RESULT)
-
-        if result == JSON_RESULT_SUCCESS:
+        if (
+            response_json.get(JSON_KEY_RESULT)
+            == JSON_RESULT_SUCCESS
+        ):
             return
 
         error_code = response_json.get(
@@ -338,9 +368,9 @@ def _is_session_error(
 
         raise exception_type(reason)
 
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
     # Core request
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
 
     def _request(
         self,
@@ -350,9 +380,7 @@ def _is_session_error(
         timeout: int | None = None,
     ) -> dict[str, Any]:
         """
-        Centralized HTTP request.
-
-        Every SDK module must use this method.
+        Centralized request function.
         """
 
         with self._lock:
@@ -393,21 +421,40 @@ def _is_session_error(
                     "Device returned invalid JSON."
                 ) from exc
 
+            #
+            # Automatic session recovery
+            #
+
+            if self._is_session_error(
+                response_json
+            ):
+
+                self._login()
+
+                response = self._session.post(
+                    self.base_url + api,
+                    json=payload,
+                    timeout=timeout or self.timeout,
+                )
+
+                response_json = response.json()
+
             self._raise_for_error(
                 response_json
             )
 
             return response_json
 
-    # ----------------------------------------------------------
+
+    # ---------------------------------------------------------
     # Heartbeat
-    # ----------------------------------------------------------
+    # ---------------------------------------------------------
 
     def _heartbeat_loop(self) -> None:
         """
         Background heartbeat worker.
 
-        Runs until stop event is signalled.
+        Runs until the stop event is signalled.
         """
 
         while not self._heartbeat_stop_event.wait(
@@ -423,21 +470,18 @@ def _is_session_error(
                     ),
                 )
 
-            except Exception:
-                #
-                # Intentionally ignored.
-                #
-                # Future improvement:
-                #
-                #   - logger
-                #   - reconnect strategy
-                #   - callback
-                #
-                pass
+            except Exception as exc:
+
+                if self._logger is not None:
+
+                    self._logger.warning(
+                        "Heartbeat failed: %s",
+                        exc,
+                    )
 
     def _start_heartbeat(self) -> None:
         """
-        Start heartbeat thread.
+        Start the background heartbeat thread.
         """
 
         if (
@@ -458,7 +502,7 @@ def _is_session_error(
 
     def _stop_heartbeat(self) -> None:
         """
-        Stop heartbeat thread.
+        Stop the background heartbeat thread.
         """
 
         self._heartbeat_stop_event.set()
