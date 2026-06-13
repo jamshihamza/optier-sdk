@@ -7,6 +7,7 @@ Core Camera client implementation.
 from __future__ import annotations
 from .core.device import DeviceManager
 from .core.login import LoginManager
+from .core.system import SystemManager
 
 import threading
 from copy import deepcopy
@@ -94,6 +95,7 @@ class Camera:
         self._heartbeat_stop_event = threading.Event()
         self.device = DeviceManager(self)
         self.login= LoginManager(self)
+        self.system= SystemManager(self)
     # ----------------------------------------------------------
     # Properties
     # ----------------------------------------------------------
