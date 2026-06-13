@@ -28,6 +28,7 @@ from .core.channel_info import SystemChannelInfoManager
 from .core.output import OutputManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
+from .core.record_tag import RecordTagManager
 
 from .constants import (
     CSRF_HEADER_NAME,
@@ -151,7 +152,7 @@ class Camera:
         self.output = OutputManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
-
+        self.record_tag = RecordTagManager(self)
 
     # ---------------------------------------------------------
     # Properties
