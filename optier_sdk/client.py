@@ -18,6 +18,13 @@ from .core.login import LoginManager
 from .core.system import SystemManager
 from .core.snapshot import SnapshotManager
 from .core.datetime import DateTimeManager
+from .core.defogging_fan import DefoggingFanManager
+from .core.log import LogManager
+
+
+
+
+
 
 from .constants import (
     CSRF_HEADER_NAME,
@@ -132,6 +139,9 @@ class Camera:
 
         self.datetime = DateTimeManager(self)
 
+        self.defogging_fan = DefoggingFanManager(self)
+
+        self.log = LogManager(self)
     # ---------------------------------------------------------
     # Properties
     # ---------------------------------------------------------
@@ -277,7 +287,11 @@ class Camera:
                     )
                 )
 
-                raise exception_type(reason)
+                print("\n========== OEM RESPONSE ==========")
+                print(response_json)
+                print("==================================\n")
+
+                raise exception_type(reason)    
 
         self._csrf_token = response.headers.get(
             CSRF_HEADER_NAME
@@ -372,8 +386,15 @@ class Camera:
             error_code
         )
 
-        raise exception_type(reason)
+        print()
+        print("=" * 60)
+        print("OEM RESPONSE")
+        print("=" * 60)
+        print(response_json)
+        print("=" * 60)
+        print()
 
+        raise exception_type(reason)
     # ---------------------------------------------------------
     # Core request
     # ---------------------------------------------------------

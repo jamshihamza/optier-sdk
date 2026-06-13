@@ -1,19 +1,21 @@
 from __future__ import annotations
-from datetime import datetime
 
-class DateTimeManager:
+
+class DefoggingFanManager:
     """
-    System Date & Time APIs.
+    Maintenance > Defogging Fan APIs.
     """
 
     def __init__(self, client) -> None:
-
         self._client = client
 
     def get(self) -> dict:
+        """
+        Get current defogging fan configuration.
+        """
 
         response = self._client._request(
-            "/API/SystemConfig/DateTime/Get",
+            "/API/Maintenance/DefoggingFan/Get",
             {
                 "version": "1.0",
                 "data": {},
@@ -23,9 +25,12 @@ class DateTimeManager:
         return response.get("data", {})
 
     def range(self) -> dict:
+        """
+        Get supported parameter range.
+        """
 
         response = self._client._request(
-            "/API/SystemConfig/DateTime/Range",
+            "/API/Maintenance/DefoggingFan/Range",
             {
                 "version": "1.0",
                 "data": {},
@@ -36,25 +41,18 @@ class DateTimeManager:
 
     def set(
         self,
-        **kwargs,
+        enabled: bool,
     ) -> None:
+        """
+        Enable or disable the defogging fan.
+        """
 
         self._client._request(
-            "/API/SystemConfig/DateTime/Set",
+            "/API/Maintenance/DefoggingFan/Set",
             {
                 "version": "1.0",
-                "data": kwargs,
+                "data": {
+                    "defogging_fan": enabled,
+                },
             },
         )
-def sync_with_computer(self) -> None:
-    """
-    Synchronize device time with local computer time.
-    like-- cam.datetime.sync_with_computer()
-    """
-
-    now = datetime.now()
-
-    self.set(
-        date=now.strftime("%m/%d/%Y"),
-        time=now.strftime("%H:%M:%S"),
-    )        
