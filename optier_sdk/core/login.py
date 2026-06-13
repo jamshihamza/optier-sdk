@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .login_device_info import LoginDeviceInfo
+from ..models.login_device_info import LoginDeviceInfo
 
 
 class LoginManager:
