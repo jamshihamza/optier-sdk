@@ -20,7 +20,7 @@ from .core.snapshot import SnapshotManager
 from .core.datetime import DateTimeManager
 from .core.defogging_fan import DefoggingFanManager
 from .core.log import LogManager
-
+from .core.system_info import SystemInfoManager
 
 
 
@@ -142,6 +142,10 @@ class Camera:
         self.defogging_fan = DefoggingFanManager(self)
 
         self.log = LogManager(self)
+
+        self.system_info = SystemInfoManager(self)
+
+        
     # ---------------------------------------------------------
     # Properties
     # ---------------------------------------------------------
