@@ -17,6 +17,7 @@ from requests.auth import HTTPDigestAuth
 from .core.login import LoginManager
 from .core.system import SystemManager
 from .core.snapshot import SnapshotManager
+from .core.datetime import DateTimeManager
 
 from .constants import (
     CSRF_HEADER_NAME,
@@ -128,6 +129,8 @@ class Camera:
         self.system = SystemManager(self)
 
         self.snapshot = SnapshotManager(self)
+
+        self.datetime = DateTimeManager(self)
 
     # ---------------------------------------------------------
     # Properties
