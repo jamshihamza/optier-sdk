@@ -18,31 +18,18 @@ cam = Camera(
     password=PASSWORD,
 )
 
-print("Connecting...")
-cam.connect()
+url = cam.playback_rtsp.url(
+    channel=1,
+    subtype=0,
+    starttime="2026-06-13T00:00:00Z",
+    endtime="2026-06-13T01:00:00Z",
+    localtime=True,
+)
 
 print()
 
-dt = cam.datetime.get()
-
 print("=" * 60)
-print("Current Device Date/Time")
+print("Playback RTSP URL")
 print("=" * 60)
 
-for k, v in dt.items():
-    print(f"{k}: {v}")
-
-print()
-
-rng = cam.datetime.range()
-
-print("=" * 60)
-print("Range")
-print("=" * 60)
-
-print(rng)
-
-cam.disconnect()
-
-print()
-print("Done.")
+print(url)
