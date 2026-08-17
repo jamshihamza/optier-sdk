@@ -24,6 +24,7 @@ from .core.system_info import SystemInfoManager
 from .core.ntp import NTPManager
 from .core.general import GeneralManager
 from .core.network_state import NetworkStateManager
+from .core.network_base import NetworkBaseManager
 from .core.record_info import RecordInfoManager
 from .core.channel_info import SystemChannelInfoManager
 from .core.output import OutputManager
@@ -155,6 +156,7 @@ class Camera:
         self.ntp = NTPManager(self)
         self.general=GeneralManager(self)
         self.network_state = NetworkStateManager(self)
+        self.network_base = NetworkBaseManager(self)
         self.record_info = RecordInfoManager(self)
         self.channel_info = SystemChannelInfoManager(self)
         self.output = OutputManager(self)
