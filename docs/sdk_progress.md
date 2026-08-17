@@ -29,6 +29,7 @@
 | Exception Alarm | ✅ | Range/Get verified on real hardware; Set implemented |
 | Line Crossing Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Perimeter Intrusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
+| Occlusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -155,6 +156,19 @@
 - Get returns 'Not configured' across unconfigured channels
 - Set: Implemented, not hardware-tested
 - No intrusion zones, AI filters, or alarm linkages were modified
+
+#### Occlusion Detection
+- Status: Implemented
+- Range: Verified on real hardware across page_types
+- Get: Verified on real hardware across page_types
+- page_type=AlarmConfig: Verified (NVR alarm linkages, voice prompts, and support_copy=True)
+- page_type=ChannelConfig: Verified (switch toggle, sensitivity [1..6])
+- page_type=AllConfig / Empty: Device returns param_error (page_type required, AlarmConfig or ChannelConfig)
+- NVR channel_max: 256
+- 7 configured channels observed with active alarm linkages and sensitivity settings (CH1, CH2, CH3, CH4, CH5, CH11, CH31)
+- 220 unconfigured channels return 'Not configured'
+- Set: Implemented, not hardware-tested
+- No occlusion switches, sensitivity, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
