@@ -31,6 +31,7 @@ from .core.email import EmailManager
 from .core.ftp import FTPManager
 from .core.ddns import DDNSManager
 from .core.https import HTTPSManager
+from .core.rtsp import RTSPManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -187,6 +188,7 @@ class Camera:
         self.ftp = FTPManager(self)
         self.ddns = DDNSManager(self)
         self.https = HTTPSManager(self)
+        self.rtsp = RTSPManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)

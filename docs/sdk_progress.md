@@ -19,6 +19,7 @@
 | Network FTP | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Network DDNS | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Network HTTPS | ✅ | Range/Get verified on real hardware; Set implemented |
+| Network RTSP | ⚠️ | Implemented per OEM spec (IPC-specific; NVR returns "not_found") |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -320,6 +321,14 @@
 - Configuration parameters verified: https_enable (True), file_type (Default, Custom), file_exist (0, 1), ca_file (0..10240 bytes), key_file (0..10240 bytes), root_ca_file (0..10240 bytes), operate (Install, Uninstall, Switch)
 - Set: Implemented, not hardware-tested
 - No SSL certificates, private keys, or TLS modes were modified
+
+#### Network RTSP
+- Status: Implemented
+- Range: Tested against hardware (URI: POST /API/NetworkConfig/Rtsp/Range) — Device returned error_code "not_found"
+- Get: Tested against hardware (URI: POST /API/NetworkConfig/Rtsp/Get) — Device returned error_code "not_found"
+- OEM Documented Note: "note:(DVR/NVR not supported)" explicitly confirmed on hardware
+- NVR Channel RTSP URLs: Provided via Channel RtspUrl API (/API/Channel/RtspUrl/Get) and managed by RtspUrlManager (cam.rtsp_url)
+- Set: Implemented, not hardware-tested
 
 #### Network Base
 - Status: Implemented
