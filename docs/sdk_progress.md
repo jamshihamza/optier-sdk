@@ -13,6 +13,7 @@
 | General | ✅ | Complete |
 | Network State | ✅ | Complete |
 | Network Base | ✅ | Range/Get & page_type verified; Set implemented |
+| Network ONVIF | ✅ | Range/Get verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -134,6 +135,17 @@
 - LAN1/LAN2 configuration: Verified
 - Set: Implemented (not hardware-tested to prevent modifying device network interfaces)
 - No OEM errors during validation
+
+#### Network ONVIF
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Supported authentication modes verified: Digest_sha256, Digest, Digest/WSSE, WSSE
+- Supported transport protocols verified: HTTP/HTTPS, HTTPS, HTTP
+- Active configuration observed: enable=False, authentication=Digest/WSSE, protocol=HTTP/HTTPS, password_empty=True
+- Username and password length constraints: [0..63] when disabled, [1..63] when enabled
+- Set: Implemented, not hardware-tested
+- No ONVIF credentials, authentication mode, or service switches were modified
 
 #### Storage Disk
 - Status: Implemented

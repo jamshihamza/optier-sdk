@@ -25,6 +25,7 @@ from .core.ntp import NTPManager
 from .core.general import GeneralManager
 from .core.network_state import NetworkStateManager
 from .core.network_base import NetworkBaseManager
+from .core.onvif import OnvifManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -163,6 +164,7 @@ class Camera:
         self.general=GeneralManager(self)
         self.network_state = NetworkStateManager(self)
         self.network_base = NetworkBaseManager(self)
+        self.onvif = OnvifManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
