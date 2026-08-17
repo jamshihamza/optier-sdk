@@ -27,6 +27,7 @@
 | Video Cover | ✅ | Range/Get verified on real hardware; Set implemented |
 | Motion Alarm | ✅ | Range/Get across page_types verified; Set implemented |
 | Exception Alarm | ✅ | Range/Get verified on real hardware; Set implemented |
+| Line Crossing Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -126,6 +127,21 @@
 - Fan abnormal alarm configured with 60s buzzer linkage
 - Set: Implemented, not hardware-tested
 - No exception alarm configurations or linkages were modified
+
+#### Line Crossing Detection
+- Status: Implemented
+- Range: Verified on real hardware across page_types
+- Get: Verified on real hardware across page_types
+- page_type=AlarmConfig: Verified (NVR alarm linkages and support_copy=True)
+- page_type=ChannelConfig: Verified (AI detection_type, rule_info with 4 rules, PTZ operation support on CH3)
+- page_type=AllConfig / Empty: Device returns param_error (page_type required, AlarmConfig or ChannelConfig)
+- NVR channel_max: 256
+- AI classification targets supported: Pedestrian, Motor Vehicle, Non-motorized Vehicle
+- Rule directions supported: A->B, B->A, A<-->B
+- Coordinate limits: x1 [0..704], y1 [0..576], x2 [0..704], y2 [0..576]
+- Get returns 'Not configured' across unconfigured channels
+- Set: Implemented, not hardware-tested
+- No tripwires, AI filters, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
