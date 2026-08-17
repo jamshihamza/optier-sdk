@@ -15,6 +15,7 @@
 | Network Base | ✅ | Range/Get & page_type verified; Set implemented |
 | Network ONVIF | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network IP Filter | ✅ | Range/Get verified on real hardware; Set implemented |
+| Network Email | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -281,6 +282,15 @@
 - Targeted channel filtering and search query payload structures verified
 - Set: Implemented, not hardware-tested
 - No statistical analytics configurations were modified
+
+#### Network Email
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Configuration parameters verified: email_enable, encryption (Disable, SSL, TLS, Auto), smtp_port (1..65535, default 25), smtp_server, username, password, password_empty, sender, recvemail (recvemail_1..3), interval_time (1, 3, 5, 10 min), test_version (2.0)
+- Set: Implemented, not hardware-tested
+- Test: Implemented, not hardware-tested
+- No SMTP credentials or email delivery configurations were modified
 
 #### Network Base
 - Status: Implemented
