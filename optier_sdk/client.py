@@ -48,6 +48,7 @@ from .core.pedestrian_detection import PedestrianDetectionManager
 from .core.cross_counting import CrossCountingManager
 from .core.stationary_object_detection import StationaryObjectDetectionManager
 from .core.sound_detection import SoundDetectionManager
+from .core.io_alarm import IOAlarmManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -196,6 +197,7 @@ class Camera:
         self.cross_counting = CrossCountingManager(self)
         self.stationary_object_detection = StationaryObjectDetectionManager(self)
         self.sound_detection = SoundDetectionManager(self)
+        self.io_alarm = IOAlarmManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)

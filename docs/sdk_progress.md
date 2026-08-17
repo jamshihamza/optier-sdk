@@ -35,6 +35,7 @@
 | Cross Counting | ✅ | Range/Get across page_types verified; Set implemented |
 | Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Sound Detection | ✅ | Range/Get across page_types verified; Set implemented |
+| IO Alarm | ✅ | Range/Get & alarm_in filter verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -237,6 +238,16 @@
 - 249 unconfigured channels return 'Not configured'
 - Set: Implemented, not hardware-tested
 - No sound detection thresholds, switches, schedules, or alarm linkages were modified
+
+#### IO Alarm
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, support_copy=True)
+- Get: Verified on real hardware
+- 22 active alarm input ports discovered and verified: 16 physical local alarm inputs (Local<-1..Local<-16) + 6 digital IPC alarm inputs (IP_CH1<-1, IP_CH3<-1, IP_CH5<-1, IP_CH6<-1, IP_CH11<-1, IP_CH31<-1)
+- Telemetry observed: alarm_type (NormallyOpen, NormallyClose, Off), buzzer, latch_time, post_recording, alarm_out, channel recording linkage arrays, email, FTP, cloud push
+- Targeted alarm_in filtering verified
+- Set: Implemented, not hardware-tested
+- No physical or digital IO alarm configurations or linkages were modified
 
 #### Network Base
 - Status: Implemented
