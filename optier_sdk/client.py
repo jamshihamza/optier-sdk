@@ -28,6 +28,7 @@ from .core.record_info import RecordInfoManager
 from .core.channel_info import SystemChannelInfoManager
 from .core.output import OutputManager
 from .core.dst import DSTManager
+from .core.encode import EncodeManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -156,6 +157,7 @@ class Camera:
         self.channel_info = SystemChannelInfoManager(self)
         self.output = OutputManager(self)
         self.dst = DSTManager(self)
+        self.encode = EncodeManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)
