@@ -31,6 +31,7 @@
 | Perimeter Intrusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Occlusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Face Detection | ✅ | Range/Get across page_types verified; Set implemented |
+| Pedestrian Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -183,6 +184,18 @@
 - 249 unconfigured channels return 'Not configured'
 - Set: Implemented, not hardware-tested
 - No face detection agreements, switches, or alarm linkages were modified
+
+#### Pedestrian Detection
+- Status: Implemented
+- Range: Verified on real hardware across page_types
+- Get: Verified on real hardware across page_types
+- page_type=AlarmConfig: Verified (channel_max=256, support_copy=True)
+- page_type=ChannelConfig: Verified (channel_max=256)
+- page_type=AllConfig / Empty: Device returns param_error (page_type required, AlarmConfig or ChannelConfig)
+- NVR channel_max: 256
+- Get returns 'Not configured' across unconfigured channels
+- Set: Implemented, not hardware-tested
+- No pedestrian humanoid detection rules, AI filters, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
