@@ -50,6 +50,7 @@ from .core.stationary_object_detection import StationaryObjectDetectionManager
 from .core.sound_detection import SoundDetectionManager
 from .core.io_alarm import IOAlarmManager
 from .core.disarming import DisarmingManager
+from .core.ptz_linkage import PTZLinkageManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -200,6 +201,7 @@ class Camera:
         self.sound_detection = SoundDetectionManager(self)
         self.io_alarm = IOAlarmManager(self)
         self.disarming = DisarmingManager(self)
+        self.ptz_linkage = PTZLinkageManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)

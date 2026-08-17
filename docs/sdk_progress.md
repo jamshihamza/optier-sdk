@@ -37,6 +37,7 @@
 | Sound Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | IO Alarm | ✅ | Range/Get & alarm_in filter verified; Set implemented |
 | Disarming | ✅ | Range/Get verified on real hardware; Set implemented |
+| PTZ Linkage | ✅ | Range/Get & channel filter verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -259,6 +260,16 @@
 - 256 disarming channels and 7-day weekly half-hour disarming schedules verified
 - Set: Implemented, not hardware-tested
 - No disarming switches, linkage actions, or schedules were modified
+
+#### PTZ Linkage
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, support_copy=True, ptz_info max_size=256)
+- Get: Verified on real hardware
+- 36 configured channels verified with full alarm trigger linkage mapping: motion, pir, io, linkage_sod, linkage_cc, linkage_sound, linkage_vt, linkage_fd, linkage_ad, linkage_cd, linkage_qd, linkage_lpd, linkage_rsd, linkage_lpr, linkage_fr, linkage_ai_pid, linkage_ai_lcd, linkage_ai_pdvd, linkage_ai_firedetet, linkage_ai_tempmeas, linkage_intrusion, linkage_region_entrance, linkage_region_exiting
+- 4 PTZ linkage preset points per channel (ptz_chn, linkage_ptz_point_index [0..255], ptz_switch)
+- Targeted channel filtering verified
+- Set: Implemented, not hardware-tested
+- No PTZ preset linkage mappings or triggers were modified
 
 #### Network Base
 - Status: Implemented
