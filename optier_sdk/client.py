@@ -26,6 +26,7 @@ from .core.general import GeneralManager
 from .core.network_state import NetworkStateManager
 from .core.network_base import NetworkBaseManager
 from .core.record_info import RecordInfoManager
+from .core.disk import DiskManager
 from .core.channel_info import SystemChannelInfoManager
 from .core.output import OutputManager
 from .core.dst import DSTManager
@@ -159,6 +160,7 @@ class Camera:
         self.network_state = NetworkStateManager(self)
         self.network_base = NetworkBaseManager(self)
         self.record_info = RecordInfoManager(self)
+        self.disk = DiskManager(self)
         self.channel_info = SystemChannelInfoManager(self)
         self.output = OutputManager(self)
         self.dst = DSTManager(self)
