@@ -24,6 +24,7 @@
 | Image Control | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | Video Cover | ✅ | Range/Get verified on real hardware; Set implemented |
 | Motion Alarm | ✅ | Range/Get across page_types verified; Set implemented |
+| Exception Alarm | ✅ | Range/Get verified on real hardware; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -112,6 +113,17 @@
 - Alarm linkage configuration observed
 - Set: Implemented, not hardware-tested
 - No motion regions, sensitivity, schedules, or alarm linkages were modified
+
+#### Exception Alarm
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- NVR channel_max: 256
+- Discovered and verified 4 hardware exception types: video_loss, disk_error, no_space_on_disk, fan_abnormal
+- Exception switches and buzzer/email/message linkage telemetry observed
+- Fan abnormal alarm configured with 60s buzzer linkage
+- Set: Implemented, not hardware-tested
+- No exception alarm configurations or linkages were modified
 
 #### Network Base
 - Status: Implemented

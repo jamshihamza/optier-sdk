@@ -37,6 +37,7 @@ from .core.osd import OSDManager
 from .core.image_control import ImageControlManager
 from .core.video_cover import VideoCoverManager
 from .core.motion_alarm import MotionAlarmManager
+from .core.exception_alarm import ExceptionAlarmManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -174,6 +175,7 @@ class Camera:
         self.image_control = ImageControlManager(self)
         self.video_cover = VideoCoverManager(self)
         self.motion_alarm = MotionAlarmManager(self)
+        self.exception_alarm = ExceptionAlarmManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)
