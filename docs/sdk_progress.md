@@ -14,6 +14,8 @@
 | Network State | ✅ | Complete |
 | Network Base | ✅ | Range/Get & page_type verified; Set implemented |
 | Record Information | ✅ | Complete |
+| Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
+| Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
@@ -86,6 +88,31 @@
 - LAN1/LAN2 configuration: Verified
 - Set: Implemented (not hardware-tested to prevent modifying device network interfaces)
 - No OEM errors during validation
+
+#### Storage Disk
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Physical HDD telemetry verified (Seagate 4TB ST4000NM0053)
+- Overwrite mode verified (Auto)
+- Format progress query verified
+- Set: Implemented (not hardware-tested to prevent modifying storage configuration)
+- Control: Implemented (not hardware-tested to prevent modifying storage configuration)
+- Format: Implemented (not hardware-tested to prevent storage data loss)
+
+#### Record Configuration
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- NVR multi-channel configuration verified
+- channel_max: 256
+- support_copy: True
+- Mainstream / DualStream verified
+- prerecord verified
+- anr / network-break recording field observed
+- copy_ch verified
+- Set: Implemented (not hardware-tested to prevent modifying active recording schedules)
+- No recording configuration was modified during validation
 
 #### DefoggingFan
 - Status: Skipped / Unsupported on tested firmware
