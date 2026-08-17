@@ -38,6 +38,7 @@
 | IO Alarm | ✅ | Range/Get & alarm_in filter verified; Set implemented |
 | Disarming | ✅ | Range/Get verified on real hardware; Set implemented |
 | PTZ Linkage | ✅ | Range/Get & channel filter verified; Set implemented |
+| Intelligent Analysis | ✅ | Range/Get, page_type & search query verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -270,6 +271,16 @@
 - Targeted channel filtering verified
 - Set: Implemented, not hardware-tested
 - No PTZ preset linkage mappings or triggers were modified
+
+#### Intelligent Analysis
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, page_type="ChannelConfig")
+- Get: Verified on real hardware
+- Statistical counting report parameters documented and supported: report_type (Daily report [24h], Weekly report [7d], Monthly report [31d], Annual report [12m]), cross_type (Number of in, Number of out), detection_type (Motion, Person, Vehicle, Non-motorized Vehicle), ai_cross_count, search_date
+- Unconfigured channels return 'Not configured' (statistical counting inactive)
+- Targeted channel filtering and search query payload structures verified
+- Set: Implemented, not hardware-tested
+- No statistical analytics configurations were modified
 
 #### Network Base
 - Status: Implemented
