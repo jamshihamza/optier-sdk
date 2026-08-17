@@ -46,6 +46,7 @@ from .core.occlusion_alarm import OcclusionAlarmManager
 from .core.face_detection import FaceDetectionManager
 from .core.pedestrian_detection import PedestrianDetectionManager
 from .core.cross_counting import CrossCountingManager
+from .core.stationary_object_detection import StationaryObjectDetectionManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -192,6 +193,7 @@ class Camera:
         self.face_detection = FaceDetectionManager(self)
         self.pedestrian_detection = PedestrianDetectionManager(self)
         self.cross_counting = CrossCountingManager(self)
+        self.stationary_object_detection = StationaryObjectDetectionManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)

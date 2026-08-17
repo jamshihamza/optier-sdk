@@ -33,6 +33,7 @@
 | Face Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Pedestrian Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Cross Counting | ✅ | Range/Get across page_types verified; Set implemented |
+| Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -209,6 +210,19 @@
 - Get returns 'Not configured' across unconfigured channels
 - Set: Implemented, not hardware-tested
 - No cross counting statistic rules, thresholds, or alarm linkages were modified
+
+#### Stationary Object Detection
+- Status: Implemented
+- Range: Verified on real hardware across page_types
+- Get: Verified on real hardware across page_types
+- page_type=AlarmConfig: Verified (channel_max=256, support_copy=True, NVR alarm linkages)
+- page_type=ChannelConfig: Verified (channel_max=256, sensitivity range [1..4], iva_lines, 4 rules per channel with 8-point polygon coordinate support [x1..x8, y1..y8], PTZ operation support on CH3)
+- page_type=AllConfig / Empty: Device returns param_error (page_type required, AlarmConfig or ChannelConfig)
+- NVR channel_max: 256
+- 7 configured channels observed with active alarm linkages and rule configurations (CH1, CH2, CH3, CH4, CH5, CH11, CH31)
+- 249 unconfigured channels return 'Not configured'
+- Set: Implemented, not hardware-tested
+- No stationary object rules, polygons, sensitivity, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
