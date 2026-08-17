@@ -17,6 +17,7 @@
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
 | Video Color | ✅ | Range/Get verified on real hardware; Set/Default implemented |
+| OSD | ✅ | Range/Get verified on real hardware; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -49,6 +50,15 @@
 - Default: Implemented (not hardware-tested to prevent modifying device configuration)
 - IPC/NVR channel structures verified
 - No unsupported items on tested hardware
+
+#### OSD
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Set: Implemented (not hardware-tested to prevent modifying device configuration)
+- IPC/NVR channel structures verified
+- Unconfigured NVR channels return "Not configured"
+- No unsupported core OSD operations on the tested hardware
 
 #### DefoggingFan
 - Status: Skipped / Unsupported on tested firmware
