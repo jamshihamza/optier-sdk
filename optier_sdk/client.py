@@ -45,6 +45,7 @@ from .core.perimeter_intrusion_alarm import PerimeterIntrusionAlarmManager
 from .core.occlusion_alarm import OcclusionAlarmManager
 from .core.face_detection import FaceDetectionManager
 from .core.pedestrian_detection import PedestrianDetectionManager
+from .core.cross_counting import CrossCountingManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -190,6 +191,7 @@ class Camera:
         self.occlusion_alarm = OcclusionAlarmManager(self)
         self.face_detection = FaceDetectionManager(self)
         self.pedestrian_detection = PedestrianDetectionManager(self)
+        self.cross_counting = CrossCountingManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)
