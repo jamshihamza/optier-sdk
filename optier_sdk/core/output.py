@@ -44,14 +44,14 @@ class OutputManager:
         )
 
     def set(
-    self,
-    **kwargs,
-            ) -> None:
+        self,
+        **kwargs,
+    ) -> None:
 
         self._client._request(
-        "/API/SystemConfig/Output/Set",
-        {
-            "version": "1.0",
-            "data": kwargs,
-        },
-    )
+            "/API/SystemConfig/Output/Set",
+            {
+                "version": "1.0",
+                "data": kwargs,
+            },
+        )

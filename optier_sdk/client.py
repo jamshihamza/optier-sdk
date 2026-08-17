@@ -304,7 +304,7 @@ class Camera:
                 )
 
                 print("\n========== OEM RESPONSE ==========")
-                print(response_json)
+                print(body)
                 print("==================================\n")
 
                 raise exception_type(reason)    

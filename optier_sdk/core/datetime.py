@@ -46,15 +46,15 @@ class DateTimeManager:
                 "data": kwargs,
             },
         )
-def sync_with_computer(self) -> None:
-    """
-    Synchronize device time with local computer time.
-    like-- cam.datetime.sync_with_computer()
-    """
+    def sync_with_computer(self) -> None:
+        """
+        Synchronize device time with local computer time.
+        like-- cam.datetime.sync_with_computer()
+        """
 
-    now = datetime.now()
+        now = datetime.now()
 
-    self.set(
-        date=now.strftime("%m/%d/%Y"),
-        time=now.strftime("%H:%M:%S"),
-    )        
+        self.set(
+            date=now.strftime("%m/%d/%Y"),
+            time=now.strftime("%H:%M:%S"),
+        )
