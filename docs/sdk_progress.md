@@ -16,6 +16,7 @@
 | Network ONVIF | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network IP Filter | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network Email | ✅ | Range/Get verified on real hardware; Set/Test implemented |
+| Network FTP | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -291,6 +292,15 @@
 - Set: Implemented, not hardware-tested
 - Test: Implemented, not hardware-tested
 - No SMTP credentials or email delivery configurations were modified
+
+#### Network FTP
+- Status: Implemented
+- Range: Verified on real hardware (ftp_test=True)
+- Get: Verified on real hardware
+- Configuration parameters verified: ftp_enable, server_ip, port (1..65535, default 21), username, password, password_empty, picture_quality (Highest, Higher, Medium, Low, Lower, Lowest), video_stream_type (Mainstream, Substream), max_package_interval (10, 20, 30, 45, 60 min), directory_name (max 95 chars)
+- Set: Implemented, not hardware-tested
+- Test: Implemented, not hardware-tested
+- No FTP credentials or upload configurations were modified
 
 #### Network Base
 - Status: Implemented
