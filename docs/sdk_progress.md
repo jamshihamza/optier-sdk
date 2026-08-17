@@ -18,6 +18,7 @@
 | Network Email | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Network FTP | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Network DDNS | ✅ | Range/Get verified on real hardware; Set/Test implemented |
+| Network HTTPS | ✅ | Range/Get verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -311,6 +312,14 @@
 - Set: Implemented, not hardware-tested
 - Test: Implemented, not hardware-tested
 - No DDNS service credentials, host mappings, or resolution switches were modified
+
+#### Network HTTPS
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/NetworkConfig/https/Range)
+- Get: Verified on real hardware (URI: POST /API/NetworkConfig/https/Get)
+- Configuration parameters verified: https_enable (True), file_type (Default, Custom), file_exist (0, 1), ca_file (0..10240 bytes), key_file (0..10240 bytes), root_ca_file (0..10240 bytes), operate (Install, Uninstall, Switch)
+- Set: Implemented, not hardware-tested
+- No SSL certificates, private keys, or TLS modes were modified
 
 #### Network Base
 - Status: Implemented
