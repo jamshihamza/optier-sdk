@@ -17,6 +17,7 @@
 | Network IP Filter | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network Email | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Network FTP | ✅ | Range/Get verified on real hardware; Set/Test implemented |
+| Network DDNS | ✅ | Range/Get verified on real hardware; Set/Test implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -301,6 +302,15 @@
 - Set: Implemented, not hardware-tested
 - Test: Implemented, not hardware-tested
 - No FTP credentials or upload configurations were modified
+
+#### Network DDNS
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Configuration parameters verified: ddns_enable, server (DYNDNS, NO_IP, CHANGEIP, DNSEXIT), domain (max 35 chars), username, password (max 32 chars), api_key (max 32 chars), password_empty, api_key_empty, test_befault_save, api_key_url (https://dnsexit.com), server_content & ddns_v1 provider profiles
+- Set: Implemented, not hardware-tested
+- Test: Implemented, not hardware-tested
+- No DDNS service credentials, host mappings, or resolution switches were modified
 
 #### Network Base
 - Status: Implemented
