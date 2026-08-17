@@ -12,6 +12,7 @@
 | NTP | ✅ | Complete |
 | General | ✅ | Complete |
 | Network State | ✅ | Complete |
+| Network Base | ✅ | Range/Get & page_type verified; Set implemented |
 | Record Information | ✅ | Complete |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
@@ -59,6 +60,16 @@
 - IPC/NVR channel structures verified
 - Unconfigured NVR channels return "Not configured"
 - No unsupported core OSD operations on the tested hardware
+
+#### Network Base
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- page_type=net_general: Verified
+- NVR dual-NIC / Double Address Mode: Verified
+- LAN1/LAN2 configuration: Verified
+- Set: Implemented (not hardware-tested to prevent modifying device network interfaces)
+- No OEM errors during validation
 
 #### DefoggingFan
 - Status: Skipped / Unsupported on tested firmware
