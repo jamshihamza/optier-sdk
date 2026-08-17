@@ -14,6 +14,7 @@
 | Network State | ✅ | Complete |
 | Network Base | ✅ | Range/Get & page_type verified; Set implemented |
 | Network ONVIF | ✅ | Range/Get verified on real hardware; Set implemented |
+| Network IP Filter | ✅ | Range/Get verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -146,6 +147,16 @@
 - Username and password length constraints: [0..63] when disabled, [1..63] when enabled
 - Set: Implemented, not hardware-tested
 - No ONVIF credentials, authentication mode, or service switches were modified
+
+#### Network IP Filter
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Supported filter modes verified: Whitelist, Blacklist
+- Supported IP types verified: Ipv4, Ipv6 (max 64 rules, start/end address length max 64 bytes)
+- Active configuration observed: enable=False, choose=Whitelist, restricted_type=Whitelist, whitelist=[], blacklist=[]
+- Set: Implemented, not hardware-tested
+- No IP firewall rules, blacklist/whitelist ranges, or filter switches were modified
 
 #### Storage Disk
 - Status: Implemented

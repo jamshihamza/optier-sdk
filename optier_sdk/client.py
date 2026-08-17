@@ -26,6 +26,7 @@ from .core.general import GeneralManager
 from .core.network_state import NetworkStateManager
 from .core.network_base import NetworkBaseManager
 from .core.onvif import OnvifManager
+from .core.ip_filter import IPFilterManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -165,6 +166,7 @@ class Camera:
         self.network_state = NetworkStateManager(self)
         self.network_base = NetworkBaseManager(self)
         self.onvif = OnvifManager(self)
+        self.ip_filter = IPFilterManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
