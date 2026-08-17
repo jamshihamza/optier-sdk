@@ -34,6 +34,7 @@
 | Pedestrian Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Cross Counting | ✅ | Range/Get across page_types verified; Set implemented |
 | Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
+| Sound Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -223,6 +224,19 @@
 - 249 unconfigured channels return 'Not configured'
 - Set: Implemented, not hardware-tested
 - No stationary object rules, polygons, sensitivity, or alarm linkages were modified
+
+#### Sound Detection
+- Status: Implemented
+- Range: Verified on real hardware across page_types
+- Get: Verified on real hardware across page_types
+- page_type=AlarmConfig: Verified (channel_max=256, support_copy=True, NVR alarm linkages)
+- page_type=ChannelConfig: Verified (channel_max=256, rise_switch, rise_sensitivity [1..100], decline_switch, decline_sensitivity [1..100], sound_intensity [1..100], time_schedule)
+- page_type=AllConfig / Empty: Device returns param_error (page_type required, AlarmConfig or ChannelConfig)
+- NVR channel_max: 256
+- 7 configured channels observed with active sound detection configurations and alarm linkages (CH1, CH3, CH4, CH5, CH6, CH11, CH31)
+- 249 unconfigured channels return 'Not configured'
+- Set: Implemented, not hardware-tested
+- No sound detection thresholds, switches, schedules, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
