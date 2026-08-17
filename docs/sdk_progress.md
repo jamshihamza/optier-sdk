@@ -30,6 +30,7 @@
 | Line Crossing Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Perimeter Intrusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Occlusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
+| Face Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -169,6 +170,19 @@
 - 220 unconfigured channels return 'Not configured'
 - Set: Implemented, not hardware-tested
 - No occlusion switches, sensitivity, or alarm linkages were modified
+
+#### Face Detection
+- Status: Implemented
+- Range: Verified on real hardware across page_types
+- Get: Verified on real hardware across page_types
+- page_type=AlarmConfig: Verified (agreed_to_agreement=True, statement_file_name='agreement_face', NVR alarm linkages, support_copy=True)
+- page_type=ChannelConfig: Verified (channel_max=256)
+- page_type=AllConfig / Empty: Device returns param_error (page_type required, AlarmConfig or ChannelConfig)
+- NVR channel_max: 256
+- 7 configured channels observed with active alarm linkages (CH1, CH2, CH3, CH4, CH5, CH11, CH31)
+- 249 unconfigured channels return 'Not configured'
+- Set: Implemented, not hardware-tested
+- No face detection agreements, switches, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
