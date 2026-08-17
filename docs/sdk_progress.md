@@ -22,6 +22,7 @@
 | Video Color | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | OSD | ✅ | Range/Get verified on real hardware; Set implemented |
 | Image Control | ✅ | Range/Get verified on real hardware; Set/Default implemented |
+| Video Cover | ✅ | Range/Get verified on real hardware; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -78,6 +79,20 @@
 - Set: Implemented (not hardware-tested to prevent modifying camera sensor configurations)
 - Default: Implemented (not hardware-tested to prevent modifying camera sensor configurations)
 - No unsupported core Range/Get operations on the tested hardware
+
+#### Video Cover
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- NVR channel_max: 256
+- support_copy: True
+- Privacy zone configuration observed
+- Standard channels returned rectangular zone information
+- PTZ channel-specific privacy-zone information observed
+- Configured privacy zone observed on CH11
+- Unconfigured channels returned "Not configured"
+- Set: Implemented, not hardware-tested
+- No privacy-mask configuration was modified during validation
 
 #### Network Base
 - Status: Implemented

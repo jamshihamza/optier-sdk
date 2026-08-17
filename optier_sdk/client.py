@@ -35,6 +35,7 @@ from .core.encode import EncodeManager
 from .core.video_color import VideoColorManager
 from .core.osd import OSDManager
 from .core.image_control import ImageControlManager
+from .core.video_cover import VideoCoverManager
 from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
@@ -170,6 +171,7 @@ class Camera:
         self.video_color = VideoColorManager(self)
         self.osd = OSDManager(self)
         self.image_control = ImageControlManager(self)
+        self.video_cover = VideoCoverManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)
