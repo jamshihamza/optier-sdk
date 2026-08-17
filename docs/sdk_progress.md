@@ -19,6 +19,7 @@
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
 | Video Color | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | OSD | ✅ | Range/Get verified on real hardware; Set implemented |
+| Image Control | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -60,6 +61,21 @@
 - IPC/NVR channel structures verified
 - Unconfigured NVR channels return "Not configured"
 - No unsupported core OSD operations on the tested hardware
+
+#### Image Control
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- Heterogeneous NVR channel capabilities verified
+- Standard optical/image controls verified
+- PTZ/motorized optical parameters observed
+- TimeSchedule day/night mode observed
+- Smart illumination/full-color capability observed
+- Defog controls observed
+- Offline channel handling verified
+- Set: Implemented (not hardware-tested to prevent modifying camera sensor configurations)
+- Default: Implemented (not hardware-tested to prevent modifying camera sensor configurations)
+- No unsupported core Range/Get operations on the tested hardware
 
 #### Network Base
 - Status: Implemented
