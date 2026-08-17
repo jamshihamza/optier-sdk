@@ -36,6 +36,7 @@
 | Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Sound Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | IO Alarm | ✅ | Range/Get & alarm_in filter verified; Set implemented |
+| Disarming | ✅ | Range/Get verified on real hardware; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -248,6 +249,16 @@
 - Targeted alarm_in filtering verified
 - Set: Implemented, not hardware-tested
 - No physical or digital IO alarm configurations or linkages were modified
+
+#### Disarming
+- Status: Implemented
+- Range: Verified on real hardware (support_copy=True)
+- Get: Verified on real hardware
+- Global one-key disarm configuration verified: disarming=False
+- Disarm action linkage suppression verified: buzzer, alarm_out, show_message, send_email, full_screen, voice_prompts, event_push_platform, mobile_push
+- 256 disarming channels and 7-day weekly half-hour disarming schedules verified
+- Set: Implemented, not hardware-tested
+- No disarming switches, linkage actions, or schedules were modified
 
 #### Network Base
 - Status: Implemented
