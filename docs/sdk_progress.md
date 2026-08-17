@@ -23,6 +23,7 @@
 | OSD | ✅ | Range/Get verified on real hardware; Set implemented |
 | Image Control | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | Video Cover | ✅ | Range/Get verified on real hardware; Set implemented |
+| Motion Alarm | ✅ | Range/Get across page_types verified; Set implemented |
 | DefoggingFan | ❌ | Skipped (device returned "not_found") |
 
 ---
@@ -93,6 +94,24 @@
 - Unconfigured channels returned "Not configured"
 - Set: Implemented, not hardware-tested
 - No privacy-mask configuration was modified during validation
+
+#### Motion Alarm
+- Status: Implemented
+- Range: Verified on real hardware
+- Get: Verified on real hardware
+- page_type=AlarmConfig: Verified
+- page_type=ChannelConfig: Verified
+- page_type=AllConfig: Verified
+- Empty data payload: Device returns param_error; page_type is required
+- NVR channel_max: 256
+- support_copy: True
+- 36 configured channels observed on the tested device
+- Motion grid: mbrow=30, mbcol=44
+- camera_smd / target_type observed
+- Sensitivity differences observed between channels
+- Alarm linkage configuration observed
+- Set: Implemented, not hardware-tested
+- No motion regions, sensitivity, schedules, or alarm linkages were modified
 
 #### Network Base
 - Status: Implemented
