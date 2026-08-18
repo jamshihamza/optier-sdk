@@ -28,6 +28,7 @@
 | Network Tuya | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network WLAN Scan | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Channel IPChannel | ✅ | Range/Get across 256 channels verified on real hardware; Set/AutoAddIPC implemented |
+| Channel Broadcast IPC | ✅ | Range/Search verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -57,6 +58,13 @@
 ---
 
 ### Module Details
+
+#### Channel Broadcast IPC
+- Status: Implemented
+- Range: Verified on real hardware (device_info array max_size=500, supports Private, Onvif, RTSP, and Custom protocols 1..16)
+- Search: Verified on real hardware (URI: POST /API/ChannelConfig/RemoteDev/Search) — Discovers local subnet IPCs for automated NVR onboarding
+- Set: Implemented, not hardware-tested
+- No remote camera network configurations or credentials were modified
 
 #### Channel IPChannel
 - Status: Implemented
