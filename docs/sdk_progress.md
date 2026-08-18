@@ -23,6 +23,7 @@
 | Network SNMP | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network IEEE8021x | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network IPv6 | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
+| Network Voice Assistant | ✅ | Range/Get (Amazon & Google) verified on real hardware; Control/Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -354,6 +355,15 @@
 - Get: Tested against hardware (URI: POST /API/NetworkConfig/Ipv6/Get) — Device returned error_code "not_found"
 - Note: Hardware endpoint tested across case variations (Ipv6, ipv6, IPv6). Like RTSP and IEEE8021x, IPv6 standalone endpoint is IPC-specific or inactive on this NVR firmware.
 - Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
+
+#### Network Voice Assistant
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/NetworkConfig/SMARTHOME/Range)
+- Get: Verified on real hardware (URI: POST /API/NetworkConfig/SMARTHOME/Get)
+- Configuration parameters verified: SmartHomePage (Amazon, Google), operate (Bind, UnBind, Apply), BindEnable (bool), UserName (0..128 chars), ScreenStream (Mainstream, Substream), default_timeout (60000ms)
+- Active configuration observed: Google assistant bound with active account and Substream projection
+- Control/Set: Implemented, not hardware-tested
+- No voice assistant cloud bindings, accounts, or stream mappings were modified
 
 #### Network Base
 - Status: Implemented
