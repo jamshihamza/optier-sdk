@@ -24,6 +24,7 @@
 | Network IEEE8021x | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network IPv6 | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network Voice Assistant | ✅ | Range/Get (Amazon & Google) verified on real hardware; Control/Set implemented |
+| Network GBT28181 | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -364,6 +365,13 @@
 - Active configuration observed: Google assistant bound with active account and Substream projection
 - Control/Set: Implemented, not hardware-tested
 - No voice assistant cloud bindings, accounts, or stream mappings were modified
+
+#### Network GBT28181
+- Status: Implemented
+- Range: Tested against hardware (URI: POST /API/NetworkConfig/T28181/Range) — Device returned error_code "not_found"
+- Get: Tested against hardware (URI: POST /API/NetworkConfig/T28181/Get) — Device returned error_code "not_found"
+- Note: Hardware endpoint tested across case variations (T28181, t28181, GBT28181, gbt28181). Like RTSP, IEEE8021x, and standalone IPv6, GB/T 28181 protocol endpoint is unsupported or inactive on this NVR firmware.
+- Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
 
 #### Network Base
 - Status: Implemented

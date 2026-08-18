@@ -36,6 +36,7 @@ from .core.snmp import SNMPManager
 from .core.ieee8021x import IEEE8021xManager
 from .core.ipv6 import IPv6Manager
 from .core.voice_assistant import VoiceAssistantManager
+from .core.gbt28181 import GBT28181Manager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -197,6 +198,7 @@ class Camera:
         self.ieee8021x = IEEE8021xManager(self)
         self.ipv6 = IPv6Manager(self)
         self.voice_assistant = VoiceAssistantManager(self)
+        self.gbt28181 = GBT28181Manager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
