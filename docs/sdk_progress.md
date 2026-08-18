@@ -30,6 +30,7 @@
 | Channel IPChannel | ✅ | Range/Get across 256 channels verified on real hardware; Set/AutoAddIPC implemented |
 | Channel Broadcast IPC | ✅ | Range/Search verified on real hardware; Set implemented |
 | Channel PTZ | ✅ | Range/Get across 256 channels verified on real hardware; Set implemented |
+| Channel Protocol Manage | ✅ | Range/Get verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -59,6 +60,13 @@
 ---
 
 ### Module Details
+
+#### Channel Protocol Manage
+- Status: Implemented
+- Range: Verified on real hardware (16 custom RTSP protocol profile slots supported)
+- Get: Verified on real hardware (16 active custom RTSP streaming configurations: protocol_name, custom_stream for Mainstream/Substream, source_path, RTSP port)
+- Set: Implemented, not hardware-tested
+- No custom RTSP stream mappings were modified
 
 #### Channel PTZ
 - Status: Implemented
