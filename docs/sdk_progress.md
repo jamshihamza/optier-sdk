@@ -29,6 +29,7 @@
 | Network WLAN Scan | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Channel IPChannel | ✅ | Range/Get across 256 channels verified on real hardware; Set/AutoAddIPC implemented |
 | Channel Broadcast IPC | ✅ | Range/Search verified on real hardware; Set implemented |
+| Channel PTZ | ✅ | Range/Get across 256 channels verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -58,6 +59,14 @@
 ---
 
 ### Module Details
+
+#### Channel PTZ
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, support_copy=True)
+- Get: Verified on real hardware across 256 channels
+- Telemetry observed: 31 PTZ-configured channels (Pelco-D, baudrate 9600, databit 8, stopbit 1, parity None, address 1, copy_ch digit), CH3 optical speed dome telemetry (focus_mode: Auto, zoom_status: 5s, pan_tilt_status: 5s, preset_status: 5s, min_focus_distance: 3m), 5 fixed cameras (Not support), 220 unconfigured channels (Not configured)
+- Set: Implemented, not hardware-tested
+- No PTZ addresses, serial protocols, or presets were modified
 
 #### Channel Broadcast IPC
 - Status: Implemented

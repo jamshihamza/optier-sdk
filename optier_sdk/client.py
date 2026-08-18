@@ -41,6 +41,7 @@ from .core.tuya import TuyaManager
 from .core.wlan_scan import WLANScanManager
 from .core.ip_channel import IPChannelManager
 from .core.remote_dev import RemoteDevManager
+from .core.ptz import PTZManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -207,6 +208,7 @@ class Camera:
         self.wlan_scan = WLANScanManager(self)
         self.ip_channel = IPChannelManager(self)
         self.remote_dev = RemoteDevManager(self)
+        self.ptz = PTZManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
