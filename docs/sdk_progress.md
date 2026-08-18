@@ -27,6 +27,7 @@
 | Network GBT28181 | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network Tuya | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network WLAN Scan | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
+| Channel IPChannel | ✅ | Range/Get across 256 channels verified on real hardware; Set/AutoAddIPC implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -56,6 +57,16 @@
 ---
 
 ### Module Details
+
+#### Channel IPChannel
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, operation_type: AddOrEditChannel, EditIPCParam, SaveCommonParam, PoeToIpChannel)
+- Get: Verified on real hardware across 256 channels
+- Channel Discovery: 36 active Online IP channels with full hardware telemetry (Private & Onvif protocols, forward ports, MAC addresses, model numbers, software versions, network mode) + 220 NotConfigured channels
+- Next bind channel: CH37
+- Set: Implemented, not hardware-tested
+- AutoAddIPC Set: Implemented, not hardware-tested
+- No IP channel mappings or camera credentials were modified
 
 #### DST
 - Status: Implemented
