@@ -44,6 +44,7 @@ from .core.remote_dev import RemoteDevManager
 from .core.ptz import PTZManager
 from .core.protocol_manage import ProtocolManageManager
 from .core.ptz_tasks import PTZTasksManager
+from .core.roi import ROIManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -213,6 +214,7 @@ class Camera:
         self.ptz = PTZManager(self)
         self.protocol_manage = ProtocolManageManager(self)
         self.ptz_tasks = PTZTasksManager(self)
+        self.roi = ROIManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)

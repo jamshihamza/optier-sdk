@@ -32,6 +32,7 @@
 | Channel PTZ | ✅ | Range/Get across 256 channels verified on real hardware; Set implemented |
 | Channel Protocol Manage | ✅ | Range/Get verified on real hardware; Set implemented |
 | Channel PTZ Tasks / Schedules | ✅ | Range/Get verified on real hardware; Set implemented |
+| Channel ROI | ✅ | Range/Get verified on real hardware across 256 channels; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -61,6 +62,14 @@
 ---
 
 ### Module Details
+
+#### Channel ROI
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, channel_info type object)
+- Get: Verified on real hardware across 256 channels (8 active ROI-capable channels CH1..CH8 with 8 customizable ROI regions each across Mainstream, Substream, and Mobilestream; 248 unconfigured channels return 'Not configured')
+- Parameters verified: roi_switch, roi_level (Lowest, Lower, Low, Medium, Higher, Highest), non_roi_fps (1..29 fps), rect (left, top, width, height [0..704, 0..576])
+- Set: Implemented, not hardware-tested
+- No ROI compression zones or target bitrates were modified
 
 #### Channel PTZ Tasks / Schedules
 - Status: Implemented
