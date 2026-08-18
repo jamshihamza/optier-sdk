@@ -21,6 +21,7 @@
 | Network HTTPS | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network RTSP | ⚠️ | Implemented per OEM spec (IPC-specific; NVR returns "not_found") |
 | Network SNMP | ✅ | Range/Get verified on real hardware; Set implemented |
+| Network IEEE8021x | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -338,6 +339,13 @@
 - Configuration parameters verified: snmp_enable (True), snmp_versions (V1, V2, V1,V2, V3; active: V1), snmp_port (1..65535, active 161), read_community (Pub-Group), write_community (Pte-Group), trap_ipaddr (127.0.0.1), trap_port (162), authentication (readonly_user, readwrite_user with MD5/SHA authentication and CBC-DES encryption)
 - Set: Implemented, not hardware-tested
 - No SNMP credentials, community names, or trap targets were modified
+
+#### Network IEEE8021x
+- Status: Implemented
+- Range: Tested against hardware (URI: POST /API/NetworkConfig/IEEE8021x/Range) — Device returned error_code "not_found"
+- Get: Tested against hardware (URI: POST /API/NetworkConfig/IEEE8021x/Get) — Device returned error_code "not_found"
+- Note: Hardware endpoint explicitly tested on an NVR. Like RTSP, IEEE8021x is often IPC-specific on these OEM devices.
+- Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
 
 #### Network Base
 - Status: Implemented

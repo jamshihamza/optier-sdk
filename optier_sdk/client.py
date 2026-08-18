@@ -33,6 +33,7 @@ from .core.ddns import DDNSManager
 from .core.https import HTTPSManager
 from .core.rtsp import RTSPManager
 from .core.snmp import SNMPManager
+from .core.ieee8021x import IEEE8021xManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -191,6 +192,7 @@ class Camera:
         self.https = HTTPSManager(self)
         self.rtsp = RTSPManager(self)
         self.snmp = SNMPManager(self)
+        self.ieee8021x = IEEE8021xManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
