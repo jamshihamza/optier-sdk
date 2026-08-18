@@ -22,6 +22,7 @@
 | Network RTSP | ⚠️ | Implemented per OEM spec (IPC-specific; NVR returns "not_found") |
 | Network SNMP | ✅ | Range/Get verified on real hardware; Set implemented |
 | Network IEEE8021x | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
+| Network IPv6 | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -345,6 +346,13 @@
 - Range: Tested against hardware (URI: POST /API/NetworkConfig/IEEE8021x/Range) — Device returned error_code "not_found"
 - Get: Tested against hardware (URI: POST /API/NetworkConfig/IEEE8021x/Get) — Device returned error_code "not_found"
 - Note: Hardware endpoint explicitly tested on an NVR. Like RTSP, IEEE8021x is often IPC-specific on these OEM devices.
+- Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
+
+#### Network IPv6
+- Status: Implemented
+- Range: Tested against hardware (URI: POST /API/NetworkConfig/Ipv6/Range) — Device returned error_code "not_found"
+- Get: Tested against hardware (URI: POST /API/NetworkConfig/Ipv6/Get) — Device returned error_code "not_found"
+- Note: Hardware endpoint tested across case variations (Ipv6, ipv6, IPv6). Like RTSP and IEEE8021x, IPv6 standalone endpoint is IPC-specific or inactive on this NVR firmware.
 - Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
 
 #### Network Base
