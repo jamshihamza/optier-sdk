@@ -31,6 +31,7 @@
 | Channel Broadcast IPC | ✅ | Range/Search verified on real hardware; Set implemented |
 | Channel PTZ | ✅ | Range/Get across 256 channels verified on real hardware; Set implemented |
 | Channel Protocol Manage | ✅ | Range/Get verified on real hardware; Set implemented |
+| Channel PTZ Tasks / Schedules | ✅ | Range/Get verified on real hardware; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -60,6 +61,13 @@
 ---
 
 ### Module Details
+
+#### Channel PTZ Tasks / Schedules
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, supported_channels=['CH3'], belt_times_use [0..100], tasks_recovery_times [5..720 min, default 5])
+- Get: Verified on real hardware (CH3 speed dome active PTZ task schedule structure verified across 5 cruise modes: Close, Line Scan, Tour, Pattern Scan, Preset with weekly 48-slot half-hour schedules)
+- Set: Implemented, not hardware-tested
+- No PTZ tour schedules or recovery times were modified
 
 #### Channel Protocol Manage
 - Status: Implemented
