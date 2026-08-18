@@ -26,6 +26,7 @@
 | Network Voice Assistant | ✅ | Range/Get (Amazon & Google) verified on real hardware; Control/Set implemented |
 | Network GBT28181 | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Network Tuya | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
+| Network WLAN Scan | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -380,6 +381,12 @@
 - Get: Tested against hardware (URI: POST /API/NetworkConfig/Tuya/Get) — Device returned error_code "not_found"
 - Note: Hardware endpoint tested across case variations (Tuya, tuya). Tuya cloud IoT integration is unsupported or inactive on this NVR firmware.
 - Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
+
+#### Network WLAN Scan
+- Status: Implemented
+- Scan: Tested against hardware (URI: POST /API/NetworkConfig/ScanWlan/Scan) — Device returned error_code "not_found"
+- Note: Hardware endpoint tested across case variations (ScanWlan, scan_wlan, WLANScan). Wireless client/AP scanning is unsupported or inactive on this wired ethernet NVR.
+- Join/Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
 
 #### Network Base
 - Status: Implemented

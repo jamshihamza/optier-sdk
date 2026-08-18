@@ -38,6 +38,7 @@ from .core.ipv6 import IPv6Manager
 from .core.voice_assistant import VoiceAssistantManager
 from .core.gbt28181 import GBT28181Manager
 from .core.tuya import TuyaManager
+from .core.wlan_scan import WLANScanManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -201,6 +202,7 @@ class Camera:
         self.voice_assistant = VoiceAssistantManager(self)
         self.gbt28181 = GBT28181Manager(self)
         self.tuya = TuyaManager(self)
+        self.wlan_scan = WLANScanManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
