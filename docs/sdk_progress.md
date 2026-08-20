@@ -34,6 +34,7 @@
 | Channel PTZ Tasks / Schedules | ✅ | Range/Get verified on real hardware; Set implemented |
 | Channel ROI | ✅ | Range/Get verified on real hardware across 256 channels; Set implemented |
 | Channel Analog Channel | ✅ | Range/Get verified on real hardware (Pure IP mode); Set implemented |
+| PreviewChannel | ✅ | Complete (Unified manager unifying PTZ, DualTalk, Floodlight2AudioAlarm, and ManualAlarm) |
 | PreviewChannel Manual Alarm | ✅ | Get verified across 10 physical and digital alarm outputs; Set implemented |
 | PreviewChannel Floodlight & Audio Alarm | ✅ | Get verified across active deterrence channels (horn & white light floodlight); Set implemented |
 | PreviewChannel DualTalk | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
@@ -67,6 +68,14 @@
 ---
 
 ### Module Details
+
+#### PreviewChannel
+- Status: Complete
+- Unified Manager: `cam.preview_channel` provides unified access to all 4 OEM-documented PreviewChannel operational interfaces:
+  - `cam.preview_channel.ptz` (`PreviewPTZManager`)
+  - `cam.preview_channel.manual_alarm` (`ManualAlarmManager`)
+  - `cam.preview_channel.floodlight_audio_alarm` (`FloodlightAudioAlarmManager`)
+  - `cam.preview_channel.dual_talk` (`DualTalkManager`)
 
 #### PreviewChannel PTZ
 - Status: Implemented
