@@ -35,6 +35,7 @@
 | Channel ROI | ✅ | Range/Get verified on real hardware across 256 channels; Set implemented |
 | Channel Analog Channel | ✅ | Range/Get verified on real hardware (Pure IP mode); Set implemented |
 | PreviewChannel Manual Alarm | ✅ | Get verified across 10 physical and digital alarm outputs; Set implemented |
+| PreviewChannel Floodlight & Audio Alarm | ✅ | Get verified across active deterrence channels (horn & white light floodlight); Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -64,6 +65,16 @@
 ---
 
 ### Module Details
+
+#### PreviewChannel Floodlight & Audio Alarm
+- Status: Implemented
+- Get: Verified on real hardware across channels
+- Active deterrence hardware discovered and verified:
+  - CH6: Siren/Horn deterrence telemetry (`audioAlarm_switch: False`, `audioAlarm_value: 5`, `audioAlarm_value_range: 1..10`, `audioAlarm_value_adjustable: True`)
+  - CH29: White-light floodlight deterrence telemetry (`floodlight_switch: False`, `floodlight_mode: 0 [always on]`, `floodlight_strobe_frequency: 1 [middle]`, `floodlight_value_adjustable: True`)
+- Parameters verified: `floodlight_switch`, `floodlight_mode` (0: always on, 1: flashing), `floodlight_value` (1..100), `floodlight_strobe_frequency` (0: low, 1: middle, 2: high), `audioAlarm_switch`, `audioAlarm_value` (1..10), `redBlueLight_switch`, `operation_type` (Floodlight, AudioAlarm, RedBlueLight, All)
+- Set: Implemented, not hardware-tested
+- No sirens, floodlights, or strobe lights were triggered during verification
 
 #### PreviewChannel Manual Alarm
 - Status: Implemented
