@@ -30,25 +30,25 @@ print("Connected.")
 print()
 
 print("=" * 60)
-print("1. PTZ Scheduled Tasks Range (/API/Schedules/PtzTasks/Range)")
+print("1. PIR Alarm Range (/API/AlarmConfig/PIR/Range)")
 print("=" * 60)
 try:
-    range_res = cam.ptz_tasks.range()
-    print("PtzTasks Range Keys:", list(range_res.keys()))
+    range_res = cam.pir.range()
+    print("PIR Range Keys:", list(range_res.keys()))
     print("channel_max:", range_res.get("channel_max"))
 except OptierSDKError as exc:
-    print(f"PtzTasks Range error: {exc}")
+    print(f"PIR Range error: {exc}")
 
 print()
 print("=" * 60)
-print("2. PTZ Scheduled Tasks Get (/API/Schedules/PtzTasks/Get)")
+print("2. PIR Alarm Get (/API/AlarmConfig/PIR/Get)")
 print("=" * 60)
 try:
-    get_res = cam.ptz_tasks.get()
+    get_res = cam.pir.get()
     channels = get_res.get("channel_info", {})
-    print(f"PtzTasks Configured Channels: {len(channels)}")
+    print(f"PIR Configured Channels: {len(channels)}")
 except OptierSDKError as exc:
-    print(f"PtzTasks Get error: {exc}")
+    print(f"PIR Get error: {exc}")
 
 print()
 print("Disconnecting...")

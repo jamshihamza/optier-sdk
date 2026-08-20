@@ -3,7 +3,9 @@
 | Module | Tested | Status |
 |---------|--------|--------|
 | Login | ✅ | Complete |
+| Device Page & UI Permissions | ✅ | Get verified across 7 main menus and all sub-module pages |
 | Account Rules | ✅ | Get verified across username/password complexity and policy rules |
+| Multi-User Account Management | ✅ | Range and Get verified across 512 user slots, active users, and permissions |
 | Recover Password | ✅ | Range and Get verified across security questions and recovery email limits |
 | Password Authorization | ✅ | Range and Get verified across recovery verification challenge modes |
 | DeviceInfo | ✅ | Complete |
@@ -71,8 +73,10 @@
 | Image Control | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | Video Cover | ✅ | Range/Get verified on real hardware; Set implemented |
 | Motion Alarm | ✅ | Range/Get across page_types verified; Set implemented |
+| PIR Alarm | ✅ | Range and Get verified across 256 channels and sensitivity controls |
 | Combination Alarm | ✅ | Range and Get verified across 256 channels and multi-sensor joint triggers |
 | Linkage Schedule | ✅ | Range and Get verified across FloodLight and Siren deterrent schedules |
+| PTZ Scheduled Tasks | ✅ | Range and Get verified across 256 channels and preset tours/scans |
 | Exception Alarm | ✅ | Range/Get verified on real hardware; Set implemented |
 | Line Crossing Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Perimeter Intrusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
@@ -102,6 +106,32 @@
 ---
 
 ### Module Details
+
+#### Multi-User Account Management (SystemUser)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/SystemConfig/User/Range) — Telemetry returning user slot constraints and user filter support
+- Get: Verified on real hardware (URI: POST /API/SystemConfig/User/Get) — Current telemetry returning all 512 user slots (ADMIN, USER1, USER2, etc.) with user_enable, username_enable, login_num limits, password status, and per-channel local/remote permissions
+- Set: Implemented per OEM documentation (URI: POST /API/SystemConfig/User/Set), not hardware-tested
+- Parameters verified: `user_info`, `user_enable`, `username_enable`, `username`, `password_empty`, `login_num`, `password_disable`, `ipc_dev_password_sync`, `permission`
+
+#### Device Page & UI Permissions (DevicePage)
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/Login/DevicePage/Get) — Telemetry returning 7 main menu categories (Display, Record, Alarm, AI, Network, Storage, System) and 35 sub-module pages for dynamic VMS UI navigation
+- Parameters verified: `main`, `title`, `sub`, `pages`, `page`
+
+#### PIR Alarm
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/AlarmConfig/PIR/Range) — Telemetry returning channel_max (256) and parameter limits
+- Get: Verified on real hardware (URI: POST /API/AlarmConfig/PIR/Get) — Current active PIR configuration across 256 channels
+- Set: Implemented per OEM documentation (URI: POST /API/AlarmConfig/PIR/Set), not hardware-tested
+- Parameters verified: `page_type`, `channel_info`
+
+#### PTZ Scheduled Tasks (PTZTasks)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Schedules/PtzTasks/Range) — Telemetry returning channel_max (256)
+- Get: Verified on real hardware (URI: POST /API/Schedules/PtzTasks/Get) — Current active scheduled PTZ tasks and time blocks
+- Set: Implemented per OEM documentation (URI: POST /API/Schedules/PtzTasks/Set), not hardware-tested
+- Parameters verified: `channel_info`
 
 #### Combination Alarm (Joint Multi-Sensor Linkage)
 - Status: Implemented

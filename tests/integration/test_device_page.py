@@ -30,25 +30,18 @@ print("Connected.")
 print()
 
 print("=" * 60)
-print("1. PTZ Scheduled Tasks Range (/API/Schedules/PtzTasks/Range)")
+print("Device Navigation & Page Permissions (/API/Login/DevicePage/Get)")
 print("=" * 60)
 try:
-    range_res = cam.ptz_tasks.range()
-    print("PtzTasks Range Keys:", list(range_res.keys()))
-    print("channel_max:", range_res.get("channel_max"))
+    get_res = cam.device_page.get()
+    main_menus = get_res.get("main", [])
+    print(f"Device Navigation Main Sections ({len(main_menus)}):")
+    for m in main_menus:
+        title = m.get("title")
+        submenus = [s.get("title") for s in m.get("sub", [])]
+        print(f"  - {title}: {submenus}")
 except OptierSDKError as exc:
-    print(f"PtzTasks Range error: {exc}")
-
-print()
-print("=" * 60)
-print("2. PTZ Scheduled Tasks Get (/API/Schedules/PtzTasks/Get)")
-print("=" * 60)
-try:
-    get_res = cam.ptz_tasks.get()
-    channels = get_res.get("channel_info", {})
-    print(f"PtzTasks Configured Channels: {len(channels)}")
-except OptierSDKError as exc:
-    print(f"PtzTasks Get error: {exc}")
+    print(f"DevicePage Get error: {exc}")
 
 print()
 print("Disconnecting...")

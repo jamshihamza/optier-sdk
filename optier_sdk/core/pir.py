@@ -3,12 +3,12 @@ from __future__ import annotations
 from typing import Any
 
 
-class PTZTasksManager:
+class PIRManager:
     """
-    Channel > Scheduled Tasks (PTZ Tasks) API.
+    Alarm > PIR Alarm API.
 
-    Manages PTZ scheduled tasks (preset tours, pan scans, pattern sweeps)
-    configured per channel and active time periods.
+    Manages Passive Infrared (PIR) body temperature motion detection alarms,
+    sensitivities, schedules, and linkage outputs.
     """
 
     def __init__(
@@ -21,22 +21,26 @@ class PTZTasksManager:
     def range(
         self,
         channels: list[str] | None = None,
+        page_type: str = "ChannelConfig",
         **kwargs,
     ) -> dict[str, Any]:
         """
-        Get parameter range and capabilities for PTZ scheduled tasks.
+        Get PIR alarm parameter range and capabilities.
 
-        :param channels: Optional channel list filter (e.g. ['CH1', 'CH2']).
+        :param channels: Optional channel filter list (e.g. ['CH1', 'CH2']).
+        :param page_type: 'ChannelConfig' or 'AlarmConfig'.
         :return: Dict containing channel_max and capability definitions.
         """
 
-        payload: dict[str, Any] = {}
+        payload: dict[str, Any] = {
+            "page_type": page_type,
+        }
         if channels is not None:
             payload["channel"] = channels
         payload.update(kwargs)
 
         response = self._client._request(
-            "/API/Schedules/PtzTasks/Range",
+            "/API/AlarmConfig/PIR/Range",
             {
                 "version": "1.0",
                 "data": payload,
@@ -51,22 +55,26 @@ class PTZTasksManager:
     def get(
         self,
         channels: list[str] | None = None,
+        page_type: str = "ChannelConfig",
         **kwargs,
     ) -> dict[str, Any]:
         """
-        Get active PTZ scheduled task configurations across channels.
+        Get active PIR alarm settings across channels.
 
-        :param channels: Optional channel list filter.
-        :return: Dict containing channel_info mapping with scheduled task items.
+        :param channels: Optional channel filter list.
+        :param page_type: 'ChannelConfig' or 'AlarmConfig'.
+        :return: Dict containing channel_info mapping with PIR settings.
         """
 
-        payload: dict[str, Any] = {}
+        payload: dict[str, Any] = {
+            "page_type": page_type,
+        }
         if channels is not None:
             payload["channel"] = channels
         payload.update(kwargs)
 
         response = self._client._request(
-            "/API/Schedules/PtzTasks/Get",
+            "/API/AlarmConfig/PIR/Get",
             {
                 "version": "1.0",
                 "data": payload,
@@ -81,22 +89,25 @@ class PTZTasksManager:
     def set(
         self,
         channel_info: dict[str, Any],
+        page_type: str = "ChannelConfig",
         **kwargs,
     ) -> dict[str, Any]:
         """
-        Update PTZ scheduled tasks for specified channels.
+        Update PIR alarm configuration for specified channels.
 
-        :param channel_info: Dict mapping channel keys to scheduled PTZ tasks.
+        :param channel_info: Dict mapping channel keys to PIR settings.
+        :param page_type: 'ChannelConfig' or 'AlarmConfig'.
         :return: Device response payload.
         """
 
         payload: dict[str, Any] = {
+            "page_type": page_type,
             "channel_info": channel_info,
         }
         payload.update(kwargs)
 
         response = self._client._request(
-            "/API/Schedules/PtzTasks/Set",
+            "/API/AlarmConfig/PIR/Set",
             {
                 "version": "1.0",
                 "data": payload,
@@ -107,6 +118,3 @@ class PTZTasksManager:
             "data",
             {},
         )
-
-
-PtzTasksManager = PTZTasksManager

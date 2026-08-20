@@ -14,10 +14,12 @@ from typing import Any
 import requests
 from requests.auth import HTTPDigestAuth
 from .core.login import LoginManager
+from .core.device_page import DevicePageManager
 from .core.account_rules import AccountRulesManager
 from .core.recover_password import RecoverPasswordManager
 from .core.password_authorization import PasswordAuthorizationManager
 from .core.system import SystemManager
+from .core.system_user import SystemUserManager
 from .core.snapshot import SnapshotManager
 from .core.datetime import DateTimeManager
 from .core.defogging_fan import DefoggingFanManager
@@ -83,6 +85,7 @@ from .core.osd import OSDManager
 from .core.image_control import ImageControlManager
 from .core.video_cover import VideoCoverManager
 from .core.motion_alarm import MotionAlarmManager
+from .core.pir import PIRManager
 from .core.combination_alarm import CombinationAlarmManager
 from .core.linkage_schedule import LinkageScheduleManager
 from .core.exception_alarm import ExceptionAlarmManager
@@ -110,8 +113,6 @@ from .core.disarming import DisarmingManager
 from .core.ptz_linkage import PTZLinkageManager
 from .core.intelligent_analysis import IntelligentAnalysisManager
 from .core.rtsp_url import RtspUrlManager
-from .core.search_record import SearchRecordManager
-from .core.record_tag import RecordTagManager
 from .core.playback_rtsp import PlaybackRtspManager
 from .core.push_subscribe import PushSubscribeManager
 
@@ -222,10 +223,12 @@ class Camera:
         #
 
         self.login = LoginManager(self)
+        self.device_page = DevicePageManager(self)
         self.account_rules = AccountRulesManager(self)
         self.recover_password = RecoverPasswordManager(self)
         self.password_authorization = PasswordAuthorizationManager(self)
         self.system = SystemManager(self)
+        self.system_user = SystemUserManager(self)
         self.snapshot = SnapshotManager(self)
         self.datetime = DateTimeManager(self)
 
@@ -293,6 +296,7 @@ class Camera:
         self.image_control = ImageControlManager(self)
         self.video_cover = VideoCoverManager(self)
         self.motion_alarm = MotionAlarmManager(self)
+        self.pir = PIRManager(self)
         self.combination_alarm = CombinationAlarmManager(self)
         self.linkage_schedule = LinkageScheduleManager(self)
         self.exception_alarm = ExceptionAlarmManager(self)
@@ -318,6 +322,7 @@ class Camera:
         self.io_alarm = IOAlarmManager(self)
         self.disarming = DisarmingManager(self)
         self.ptz_linkage = PTZLinkageManager(self)
+        self.ptz_tasks = PTZTasksManager(self)
         self.intelligent_analysis = IntelligentAnalysisManager(self)
         self.rtsp_url = RtspUrlManager(self)
         self.search_record = SearchRecordManager(self)
