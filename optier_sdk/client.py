@@ -31,6 +31,7 @@ from .core.maintenance_reset import MaintenanceResetManager
 from .core.log import LogManager
 from .core.system_info import SystemInfoManager
 from .core.privacy_statement import PrivacyStatementManager
+from .core.output import OutputManager
 from .core.ntp import NTPManager
 from .core.general import GeneralManager
 from .core.network_state import NetworkStateManager
@@ -224,6 +225,7 @@ class Camera:
         self.log = LogManager(self)
         self.system_info = SystemInfoManager(self)
         self.privacy_statement = PrivacyStatementManager(self)
+        self.output = OutputManager(self)
         self.ntp = NTPManager(self)
         self.general=GeneralManager(self)
         self.network_state = NetworkStateManager(self)

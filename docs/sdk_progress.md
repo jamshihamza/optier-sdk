@@ -12,6 +12,7 @@
 | SystemInfo | ✅ | Complete |
 | NTP | ✅ | Complete |
 | General | ✅ | Complete |
+| System Output | ✅ | Range and Get verified across display resolutions up to 8K |
 | Privacy Statement | ✅ | Range and Get verified on real hardware |
 | Network State | ✅ | Complete |
 | Network Base | ✅ | Range/Get & page_type verified; Set implemented |
@@ -85,6 +86,13 @@
 ---
 
 ### Module Details
+
+#### System Output
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/SystemConfig/Output/Range) — LIVE-OUT resolutions (1024x768, 1280x1024, 1440x900, 720P, 1080P, 1600x1200, 1920x1200, 4K@30HZ, 4K@60HZ, 8K@30HZ, 8K@60HZ), and 8K HDMI port usage guidelines
+- Get: Verified on real hardware (URI: POST /API/SystemConfig/Output/Get) — Current telemetry (output_resolution: '4K(3840x2160)@60HZ')
+- Set: Implemented per OEM documentation (URI: POST /API/SystemConfig/Output/Set), not hardware-tested
+- Parameters verified: `output`, `LIVE-OUT`, `output_resolution`, `tips_8k`
 
 #### Maintenance Reset (Load Default Parameter)
 - Status: Implemented
