@@ -23,7 +23,7 @@ sequenceDiagram
     Dec->>Pool: Acquire AVFrame / D3D11 Texture
     Dec->>Dec: Decode Frame (YUV420P / NV12)
     Dec->>Ring: Atomic Push Latest Frame (Capacity = 1)
-    Note over Ring: Overwrites old frame if unconsumed (Zero Latency)
+    Note over Ring: Overwrites old frame if unconsumed (Bounded 1-Frame Latency)
     Render->>Ring: Atomic Pop Latest Frame (V-Sync Callback)
     Render->>Render: GPU Texture Blit / Pixel Shader (Zero CPU Copies)
 ```
@@ -68,7 +68,7 @@ public:
         slots_[current_write] = std::move(item);
 
         if (next_write == read_idx_.load(std::memory_order_acquire)) {
-            // Buffer full: advance read pointer to drop oldest frame (Zero Latency)
+            // Buffer full: advance read pointer to drop oldest frame (Bounded Single-Frame Latency)
             read_idx_.store((next_write + 1) % Capacity, std::memory_order_release);
             dropped_count_.fetch_add(1, std::memory_order_relaxed);
         }

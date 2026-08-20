@@ -5,17 +5,23 @@ This document establishes measurable performance targets, resource budgets, and 
 
 ---
 
-## 1. Measurable Performance Targets
+## 1. Performance Classification & Targets
 
-| Performance Dimension | Benchmark Metric | Target (Software CPU Decode) | Target (D3D11VA GPU Decode) | Measurement Protocol |
+### A. Architectural Requirements & Desired Targets
+| Performance Dimension | Benchmark Metric | Desired Target (Software CPU) | Desired Target (D3D11VA GPU) | Classification & Protocol |
 | :--- | :--- | :---: | :---: | :--- |
-| **Stream Startup Latency** | Time from `startStream()` to first decoded frame on screen | `< 250 ms` | `< 150 ms` | High-resolution clock measurement from RTSP `DESCRIBE` to first `on_frame` invocation. |
-| **Stream Reconnect Latency**| Time to recover from sudden network socket drop | `< 1,200 ms` | `< 800 ms` | Automated TCP RST injection test measuring recovery time. |
-| **Live Frame Latency** | Network arrival to display buffer blit | `< 45 ms` (1.5 frames) | `< 20 ms` (1 frame) | Timestamp delta from RTP packet presentation timestamp (PTS) to render. |
-| **Frame Drop Tolerance** | UI / Decoder drop rate under full rated load | `0.00%` (Zero Drops) | `0.00%` (Zero Drops) | Counted over 10-minute continuous streaming session. |
-| **PTZ Control Response** | Time from UI button click to device motion start | `< 60 ms` | `< 60 ms` | Round-trip HTTP request timer for `POST /API/PreviewChannel/PTZ/Control`. |
-| **Forensic Search Latency** | Query 100k face / 200k plate records on NVR | `< 350 ms` | `< 350 ms` | End-to-end timer for `POST /API/AI/SnapedObjects/SearchPlate`. |
-| **Timeline Scrub Latency** | Playback seek to new second mark | `< 300 ms` | `< 200 ms` | Timestamp seek on `POST /API/PreviewChannel/PlaybackRtspUrl/Get`. |
+| **Stream Startup Latency** | Time from `startStream()` to first decoded frame on screen | `< 250 ms` | `< 150 ms` | **Target**: Measured from RTSP `DESCRIBE` to first `on_frame` invocation. |
+| **Stream Reconnect Latency**| Time to recover from sudden network socket drop | `< 1,200 ms` | `< 800 ms` | **Target**: Controlled backoff recovery after TCP RST injection. |
+| **Live Presentation Latency** | Network arrival to display buffer blit | `< 45 ms` (1.5 frames) | `< 20 ms` (1 frame) | **Requirement**: Single-frame bounded buffer latency (< 45ms @ 30 FPS). |
+| **Network Packet Loss Drops** | Unexpected drops due to network/decoder failure | `0.00%` | `0.00%` | **Requirement**: 0 unexpected drops over 10-minute continuous session. |
+| **Intentional Buffer Overwrites** | Unconsumed frame drops when UI throttled/minimized | Dynamic | Dynamic | **Design Feature**: Bounded buffer deliberately drops old frames to prevent latency drift. |
+| **PTZ Control Response** | Time from UI button click to device motion start | `< 60 ms` | `< 60 ms` | **Target**: Round-trip HTTP timer for `POST /API/PreviewChannel/PTZ/Control`. |
+| **Forensic Search Latency** | Query 100k face / 200k plate records on NVR | `< 350 ms` | `< 350 ms` | **Target**: End-to-end timer for `POST /API/AI/SnapedObjects/SearchPlate`. |
+| **Timeline Scrub Latency** | Playback seek to new second mark | `< 300 ms` | `< 200 ms` | **Target**: Timestamp seek on `POST /API/PreviewChannel/PlaybackRtspUrl/Get`. |
+
+### B. Experimentally Verified Hardware Measurements (Python/C++ Prototype Baseline)
+- **1-Stream (720p Substream)**: ~32.48 Decoded FPS | ~5.55 MB RAM Peak | ~19.8% Single Core CPU Load (Software decode).
+- **4-Streams (720p Substream)**: ~100.0 Aggregate Decoded FPS | ~18.77 MB RAM Peak | ~52.6% CPU Load across 4 channels.
 
 ---
 

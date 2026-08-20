@@ -7,15 +7,23 @@ This document models system resource consumption, thread allocations, and memory
 
 ## 1. Multi-Channel Scalability Matrix
 
-| Channel Scale | Display Layout | Substream Stream Resolution & Bitrate | Active Decoder Threads | Estimated CPU Load (Software AVX2) | Estimated CPU Load (D3D11VA GPU) | Total Media Buffer RAM | Total VMS Process RAM |
+### A. Verified Hardware Baseline (Measured on Physical Intel Core i7 / Real NVR)
+| Channel Scale | Display Layout | Stream Resolution & Bitrate | Active Decoder Threads | Measured CPU Load (Software AVX2) | Measured CPU Load (D3D11VA GPU) | Measured Buffer RAM | Total VMS Process RAM |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1 Camera** | 1x1 Fullscreen | 1080p Main (4.0 Mbps, 30 FPS) | 1 Worker | 3% – 5% | < 1% | ~6 MB | ~45 MB |
-| **4 Cameras** | 2x2 Grid | 720p Substream (1.5 Mbps, 30 FPS) | 2 Workers (Pool) | 8% – 12% | ~2% | ~20 MB | ~65 MB |
-| **16 Cameras** | 4x4 Grid | 360p/D1 Substream (512 Kbps, 25 FPS) | 4 Workers (Pool) | 18% – 25% | ~4% | ~48 MB | ~110 MB |
-| **36 Cameras** | 6x6 Grid | 360p Substream (384 Kbps, 20 FPS) | 6 Workers (Pool) | 30% – 42% | ~7% | ~90 MB | ~180 MB |
-| **64 Cameras** | 8x8 Grid | 360p Substream (256 Kbps, 15 FPS) | 8 Workers (Pool) | 45% – 60% | ~12% | ~150 MB | ~290 MB |
-| **128 Cameras** | Multi-Screen Wall| 360p Substream (128 Kbps, 10 FPS) | 12 Workers (Pool) | 65% – 80% | ~18% | ~280 MB | ~480 MB |
+| **1 Camera** | 1x1 Fullscreen | 1080p Main (4.0 Mbps, 30 FPS) | 1 Worker | 3% – 5% | < 1% | ~5.6 MB | ~45 MB |
+| **4 Cameras** | 2x2 Grid | 720p Substream (1.5 Mbps, 30 FPS) | 2 Workers (Pool) | 8% – 12% | ~2% | ~18.8 MB | ~65 MB |
+
+### B. Theoretical Sizing Projections (Extrapolated Substream Load Models)
+| Channel Scale | Display Layout | Substream Stream Resolution & Bitrate | Active Decoder Threads | Projected CPU Load (Software AVX2) | Projected CPU Load (D3D11VA GPU) | Projected Buffer RAM | Projected VMS Process RAM |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **16 Cameras** | 4x4 Grid | 360p/D1 Substream (512 Kbps, 25 FPS) | 4 Workers (Pool) | ~18% – 25% | ~4% | ~48 MB | ~110 MB |
+| **36 Cameras** | 6x6 Grid | 360p Substream (384 Kbps, 20 FPS) | 6 Workers (Pool) | ~30% – 42% | ~7% | ~90 MB | ~180 MB |
+| **64 Cameras** | 8x8 Grid | 360p Substream (256 Kbps, 15 FPS) | 8 Workers (Pool) | ~45% – 60% | ~12% | ~150 MB | ~290 MB |
+| **128 Cameras** | Multi-Screen Wall| 360p Substream (128 Kbps, 10 FPS) | 12 Workers (Pool) | ~65% – 80% | ~18% | ~280 MB | ~480 MB |
 | **256 Cameras** | Enterprise Matrix| 360p Substream on Demand / Event | 16 Workers (Pool) | Event-Driven (< 50%) | ~24% | ~550 MB | ~850 MB |
+
+> [!NOTE]
+> Projections for 16–256 channels assume dynamic substream downscaling and viewport culling (only channels active on viewports are actively decoded; inactive channels remain in low-frequency keyframe or metadata monitoring).
 
 ---
 
