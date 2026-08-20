@@ -52,6 +52,7 @@
 | Storage Cloud | ✅ | Range and Get verified across cloud providers and overwrite retention policies |
 | Maintenance Developer Mode | ✅ | Range and Get verified across SSH toggles, debug outputs, and log retention |
 | Maintenance FtpUpgrade | ✅ | Range, Get, and Progress verified across FTP/HTTP online upgrade parameters |
+| Maintenance IPC Upgrade | ✅ | Range and Get verified across online IP cameras and firmware versions |
 | Push Subscribe | ✅ | Get verified across 28 hardware and AI push event bitmask categories |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
@@ -79,6 +80,14 @@
 ---
 
 ### Module Details
+
+#### Maintenance IPC Upgrade
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/IPCMaintaint/IPCUpgrade/Range) — channel_max (256), password limits, 9 upgradeable IPC slots (CH1, CH2, CH3, CH4, CH5, CH6, CH11, CH29, CH31)
+- Get: Verified on real hardware (URI: POST /API/IPCMaintaint/IPCUpgrade/Get) — Current telemetry returning all 256 channels, with 9 online IP cameras returning IP addresses, firmware versions (V21.45, V31.35, V40.45), and firmware file extension (.sw)
+- Token: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/IPCUpgrade/Token), not hardware-tested
+- Upgrade: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/IPCUpgrade/Upgrade), not hardware-tested
+- Parameters verified: `channel_info`, `channel_max`, `password`, `file_name`, `file_size`, `ipc_channels`, `upgrade_head`, `upgrade_token`, `state`, `ip_address`, `software_version`, `file_type`
 
 #### Login Recover Password
 - Status: Implemented
