@@ -46,6 +46,7 @@ from .core.protocol_manage import ProtocolManageManager
 from .core.ptz_tasks import PTZTasksManager
 from .core.roi import ROIManager
 from .core.analog_channel import AnalogChannelManager
+from .core.manual_alarm import ManualAlarmManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -217,6 +218,7 @@ class Camera:
         self.ptz_tasks = PTZTasksManager(self)
         self.roi = ROIManager(self)
         self.analog_channel = AnalogChannelManager(self)
+        self.manual_alarm = ManualAlarmManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)

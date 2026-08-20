@@ -34,6 +34,7 @@
 | Channel PTZ Tasks / Schedules | ✅ | Range/Get verified on real hardware; Set implemented |
 | Channel ROI | ✅ | Range/Get verified on real hardware across 256 channels; Set implemented |
 | Channel Analog Channel | ✅ | Range/Get verified on real hardware (Pure IP mode); Set implemented |
+| PreviewChannel Manual Alarm | ✅ | Get verified across 10 physical and digital alarm outputs; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -63,6 +64,12 @@
 ---
 
 ### Module Details
+
+#### PreviewChannel Manual Alarm
+- Status: Implemented
+- Get: Verified on real hardware across 10 output ports (4 physical local relay/alarm outputs Local->1..Local->4 and 6 digital IP camera alarm outputs IP_CH1->1, IP_CH3->1, IP_CH5->1, IP_CH6->1, IP_CH11->1, IP_CH31->1)
+- Set: Implemented, not hardware-tested
+- No siren or physical alarm output relays were tripped during verification
 
 #### Channel Analog Channel
 - Status: Implemented
