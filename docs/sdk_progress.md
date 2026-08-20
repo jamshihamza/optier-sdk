@@ -56,6 +56,7 @@
 | Maintenance IPC FTP Upgrade | ✅ | Range and Get verified across camera auto-upgrade capabilities |
 | Maintenance IPC Param Management | ✅ | Range and Get verified across camera parameter backup/restore endpoints |
 | Maintenance IPC Reboot | ✅ | Range and Get verified across 36 active IP camera channels |
+| Maintenance IPC Reset (Load Default) | ✅ | Range and Get verified across 36 active IP camera channels |
 | Push Subscribe | ✅ | Get verified across 28 hardware and AI push event bitmask categories |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
@@ -83,6 +84,13 @@
 ---
 
 ### Module Details
+
+#### Maintenance IPC Reset (Load Default)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/IPCMaintaint/IPCReset/Range) — 36 configured IPC reset channel slots
+- Get: Verified on real hardware (URI: POST /API/IPCMaintaint/IPCReset/Get) — Current telemetry returning all 36 active channels with online status, IP addresses, and firmware builds
+- Set (reset_cameras): Implemented per OEM documentation (URI: POST /API/IPCMaintaint/IPCReset/Set), not hardware-tested
+- Parameters verified: `channel_info`, `password`, `reset_switch`, `base_secondary_authentication`, `status`, `ip_address`, `software_version`
 
 #### Maintenance IPC Reboot
 - Status: Implemented

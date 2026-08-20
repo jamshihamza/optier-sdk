@@ -26,6 +26,7 @@ from .core.ipc_upgrade import IPCUpgradeManager
 from .core.ftp_ipc_upgrade import FtpIPCUpgradeManager
 from .core.ipc_param_management import IPCParamManagementManager
 from .core.ipc_reboot import IPCRebootManager
+from .core.ipc_reset import IPCResetManager
 from .core.log import LogManager
 from .core.system_info import SystemInfoManager
 from .core.privacy_statement import PrivacyStatementManager
@@ -216,6 +217,7 @@ class Camera:
         self.ftp_ipc_upgrade = FtpIPCUpgradeManager(self)
         self.ipc_param_management = IPCParamManagementManager(self)
         self.ipc_reboot = IPCRebootManager(self)
+        self.ipc_reset = IPCResetManager(self)
 
         self.log = LogManager(self)
         self.system_info = SystemInfoManager(self)
