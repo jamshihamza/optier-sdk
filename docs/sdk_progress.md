@@ -40,6 +40,7 @@
 | PreviewChannel DualTalk | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | PreviewChannel PTZ | ✅ | Get & Progress verified on CH3 speed dome and standard channels; Control implemented |
 | Record Search Month | ✅ | Get verified across channels, dates, and search types |
+| Record Search Record | ✅ | Range and Search verified across channels, dates, and time intervals |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -69,6 +70,12 @@
 ---
 
 ### Module Details
+
+#### Record Search Record
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Playback/SearchRecord/Range) — Supported channels: 256, stream modes: Mainstream, Substream, size limits, disk_event_id limits
+- Search: Verified on real hardware (URI: POST /API/Playback/SearchRecord/Search) — Discovered 47 recorded footage segments on CH1 for 08/20/2026 with exact start/end timestamps, file sizes, record types, record IDs, and lock states
+- Parameters verified: `channel`, `start_date`, `start_time`, `end_date`, `end_time`, `record_type`, `record_type_ex`, `stream_mode`, `smart_region`, `enable_smart_search`
 
 #### Record Search Month
 - Status: Implemented
