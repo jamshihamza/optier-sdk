@@ -57,6 +57,7 @@
 | Maintenance IPC Param Management | ✅ | Range and Get verified across camera parameter backup/restore endpoints |
 | Maintenance IPC Reboot | ✅ | Range and Get verified across 36 active IP camera channels |
 | Maintenance IPC Reset (Load Default) | ✅ | Range and Get verified across 36 active IP camera channels |
+| Maintenance Reset | ✅ | Range verified across channel, record, alarm, network, storage, system |
 | Push Subscribe | ✅ | Get verified across 28 hardware and AI push event bitmask categories |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
@@ -84,6 +85,12 @@
 ---
 
 ### Module Details
+
+#### Maintenance Reset (Load Default Parameter)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Maintenance/Reset/Range) — channel (bool), record (bool), alarm (bool), network (bool), storage (bool), system (bool), secondary_authentication (0..16 chars)
+- Set (reset_defaults): Implemented per OEM documentation (URI: POST /API/Maintenance/Reset/Set), not hardware-tested
+- Parameters verified: `channel`, `record`, `alarm`, `network`, `storage`, `system`, `secondary_authentication`, `base_secondary_authentication`
 
 #### Maintenance IPC Reset (Load Default)
 - Status: Implemented
