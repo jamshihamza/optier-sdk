@@ -51,6 +51,7 @@
 | Storage Cloud | ✅ | Range and Get verified across cloud providers and overwrite retention policies |
 | Maintenance Developer Mode | ✅ | Range and Get verified across SSH toggles, debug outputs, and log retention |
 | Maintenance FtpUpgrade | ✅ | Range, Get, and Progress verified across FTP/HTTP online upgrade parameters |
+| Push Subscribe | ✅ | Get verified across 28 hardware and AI push event bitmask categories |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
@@ -77,6 +78,12 @@
 ---
 
 ### Module Details
+
+#### Push Subscribe
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/PushSubscribe/Get) — Current telemetry returning all 28 alarm push subscription categories: HddAlarm, FansAbnormalAlarm, IOAlarm, MotionAlarm, PIRAlarm, PDAlarm, FDAlarm, ADAlarm, CCAlarm, CDAlarm, QDAlarm, RSDAlarm, LPDAlarm, SODAlarm, VTAlarm, SDAlarm, LCDAlarm, PIDAlarm, TempMeasAlarm, FireDetectionAlarm, IntrusionAlarm, RegionEntranceAlarm, RegionExitingAlarm, Human, Vehicle, VideoLoss, FaceAlarm (Allow List, Block List, Stranger), LPRAlarm (Allow List, Block List, Unknown)
+- Set: Implemented per OEM documentation (URI: POST /API/PushSubscribe/Set), not hardware-tested
+- Parameters verified: `app_support_ai_notification_subscribe`, `HddAlarm`, `FansAbnormalAlarm`, `IOAlarm`, `MotionAlarm`, `PIRAlarm`, `SmartAlarm`, `VideoLoss`, `FaceAlarm`, `LPRAlarm`, `ChnFlags`, `Group`
 
 #### System Privacy Statement
 - Status: Implemented

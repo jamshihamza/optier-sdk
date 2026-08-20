@@ -89,6 +89,7 @@ from .core.rtsp_url import RtspUrlManager
 from .core.search_record import SearchRecordManager
 from .core.record_tag import RecordTagManager
 from .core.playback_rtsp import PlaybackRtspManager
+from .core.push_subscribe import PushSubscribeManager
 
 
 from .constants import (
@@ -274,6 +275,7 @@ class Camera:
         self.search_record = SearchRecordManager(self)
         self.record_tag = RecordTagManager(self)
         self.playback_rtsp = PlaybackRtspManager(self)
+        self.push_subscribe = PushSubscribeManager(self)
 
         
     # ---------------------------------------------------------
