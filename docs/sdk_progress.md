@@ -77,6 +77,10 @@
 | Face Group (Watchlists) | ✅ | Get and GetId verified across 256 channels and similarity bounds |
 | Face Database (Enrolment) | ✅ | Add, Modify, Remove, Feature extraction schema verified |
 | Face Search & Analytics | ✅ | VHD log counts, 3600+ snapshot face search, pagination, realtime alarm verified |
+| License Plate Detection (LPD) | ✅ | Range and Get verified across 256 channels and EU_Plate formats; Set implemented |
+| License Plate Group (Watchlists) | ✅ | Get and GetId verified across Allow/Block/Unknown lists on 256 channels |
+| License Plate Database (Enrolment) | ✅ | Add, Modify, Remove, ChangeGroup schema verified |
+| License Plate Search & Forensic | ✅ | 179,000+ plate snapshot search, fuzzy matching, pagination verified |
 | Pedestrian Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Cross Counting | ✅ | Range/Get across page_types verified; Set implemented |
 | Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
@@ -90,6 +94,30 @@
 ---
 
 ### Module Details
+
+#### License Plate Detection (LPD)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/AI/Setup/LPD/Range) — Telemetry returning channel_max (256), timeout, and per-channel sensitivity limits
+- Get: Verified on real hardware (URI: POST /API/AI/Setup/LPD/Get) — Current telemetry returning all 256 channels with switch, sensitivity, snap_mode, detection_mode, and detection_type (EU_Plate)
+- Set: Implemented per OEM documentation (URI: POST /API/AI/Setup/LPD/Set), not hardware-tested
+- Parameters verified: `channel_info`, `page_type`, `status`, `switch`, `sensitivity`, `snap_mode`, `detection_type`, `rule_info`
+
+#### License Plate Group (PlateGroup)
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/AI/PlateGroup/Get) — Telemetry returning Allow List, Block List, and Unknown groups across 256 channels
+- GetId: Verified on real hardware (URI: POST /API/AI/PlateGroup/GetId) — Next available group ID calculation
+- Add, Modify, Remove: Implemented per OEM documentation (URI: POST /API/AI/PlateGroup/{Action})
+
+#### License Plate Database (Enrolment)
+- Status: Implemented
+- Add, Modify, Remove, Change: Implemented per OEM documentation (URI: POST /API/AI/Plates/{Action})
+- Parameters supported: Plate number (1..15 chars), PlateColor, CarBrand, CarType, Owner, IdCode, Phone, Domicile, Remark, EnableChnAlarm
+
+#### License Plate Search & Forensics
+- Status: Implemented
+- Search: Verified on real hardware (URI: POST /API/AI/SnapedObjects/SearchPlate) — Searched 179,000+ captured plate snapshot records
+- GetByIndex: Verified on real hardware (URI: POST /API/AI/SnapedObjects/GetByIndex) — Paginated retrieval of snapshot plate metadata (UUID, channel, SnapId, Plate, MatchedPlate, timestamps)
+- StopSearch & GetById: Implemented per OEM documentation
 
 #### Face Group (Watchlists & FDGroup)
 - Status: Implemented

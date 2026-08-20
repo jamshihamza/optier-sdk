@@ -89,6 +89,10 @@ from .core.face_detection import FaceDetectionManager
 from .core.face_group import FaceGroupManager
 from .core.face_database import FaceDatabaseManager
 from .core.face_search import FaceSearchManager
+from .core.plate_group import PlateGroupManager
+from .core.plate_database import PlateDatabaseManager
+from .core.plate_search import PlateSearchManager
+from .core.lpd import LPDManager
 from .core.pedestrian_detection import PedestrianDetectionManager
 from .core.cross_counting import CrossCountingManager
 from .core.stationary_object_detection import StationaryObjectDetectionManager
@@ -287,6 +291,10 @@ class Camera:
         self.face_group = FaceGroupManager(self)
         self.face_database = FaceDatabaseManager(self)
         self.face_search = FaceSearchManager(self)
+        self.plate_group = PlateGroupManager(self)
+        self.plate_database = PlateDatabaseManager(self)
+        self.plate_search = PlateSearchManager(self)
+        self.lpd = LPDManager(self)
         self.pedestrian_detection = PedestrianDetectionManager(self)
         self.cross_counting = CrossCountingManager(self)
         self.stationary_object_detection = StationaryObjectDetectionManager(self)
