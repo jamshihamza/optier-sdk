@@ -48,6 +48,7 @@
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
 | Storage Cloud | ✅ | Range and Get verified across cloud providers and overwrite retention policies |
+| Maintenance Developer Mode | ✅ | Range and Get verified across SSH toggles, debug outputs, and log retention |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
@@ -74,6 +75,15 @@
 ---
 
 ### Module Details
+
+#### Maintenance Developer Mode
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Maintenance/DeveloperMode/Range) — SSH switch (rw bool), export_disk_switch (Shut Off, Output To Terminal, Output To Disk), export_days (all, 1, 2, 3, 4, 5), default_timeout (1200000ms), enable_export (True), enable_delete (True), support_ipc_log_export (True), support_ipc_log_delete (True), and 256 channel log collection slots
+- Get: Verified on real hardware (URI: POST /API/Maintenance/DeveloperMode/Get) — Current telemetry (ssh_switch: False, export_disk_switch: Shut Off, debug_info_level: Error Information, enable_export: True, enable_delete: True, 256 channel log collection states)
+- Set: Implemented, not hardware-tested
+- Token: Implemented per OEM documentation (URI: POST /API/Maintenance/DeveloperMode/Token)
+- Clear: Implemented per OEM documentation (URI: POST /API/Maintenance/DeveloperMode/Clear)
+- Parameters verified: `ssh_switch`, `export_disk_switch`, `debug_info_level`, `enable_export`, `enable_delete`, `support_ipc_log_export`, `support_ipc_log_delete`, `export_days`, `channel_info`, `download_type`
 
 #### Storage Cloud
 - Status: Implemented

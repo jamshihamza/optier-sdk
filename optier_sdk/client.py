@@ -19,6 +19,7 @@ from .core.snapshot import SnapshotManager
 from .core.datetime import DateTimeManager
 from .core.defogging_fan import DefoggingFanManager
 from .core.auto_reboot import AutoRebootManager
+from .core.developer_mode import DeveloperModeManager
 from .core.log import LogManager
 from .core.system_info import SystemInfoManager
 from .core.ntp import NTPManager
@@ -200,6 +201,7 @@ class Camera:
 
         self.defogging_fan = DefoggingFanManager(self)
         self.auto_reboot = AutoRebootManager(self)
+        self.developer_mode = DeveloperModeManager(self)
 
         self.log = LogManager(self)
         self.system_info = SystemInfoManager(self)
