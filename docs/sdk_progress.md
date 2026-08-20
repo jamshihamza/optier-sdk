@@ -36,6 +36,7 @@
 | Channel Analog Channel | ✅ | Range/Get verified on real hardware (Pure IP mode); Set implemented |
 | PreviewChannel Manual Alarm | ✅ | Get verified across 10 physical and digital alarm outputs; Set implemented |
 | PreviewChannel Floodlight & Audio Alarm | ✅ | Get verified across active deterrence channels (horn & white light floodlight); Set implemented |
+| PreviewChannel DualTalk | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -65,6 +66,12 @@
 ---
 
 ### Module Details
+
+#### PreviewChannel DualTalk
+- Status: Implemented
+- Get: Tested against hardware (URI: POST /API/PreviewChannel/DualTalk/Get) — Device returned error_code "not_found"
+- Note: Hardware endpoint tested across channels and payload structures; two-way audio intercom is unsupported or inactive on this NVR firmware.
+- Set: Implemented per OEM documentation schemas, but intentionally not hardware-tested.
 
 #### PreviewChannel Floodlight & Audio Alarm
 - Status: Implemented

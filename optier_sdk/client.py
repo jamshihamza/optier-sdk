@@ -48,6 +48,7 @@ from .core.roi import ROIManager
 from .core.analog_channel import AnalogChannelManager
 from .core.manual_alarm import ManualAlarmManager
 from .core.floodlight_audio_alarm import FloodlightAudioAlarmManager
+from .core.dual_talk import DualTalkManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -221,6 +222,7 @@ class Camera:
         self.analog_channel = AnalogChannelManager(self)
         self.manual_alarm = ManualAlarmManager(self)
         self.floodlight_audio_alarm = FloodlightAudioAlarmManager(self)
+        self.dual_talk = DualTalkManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
