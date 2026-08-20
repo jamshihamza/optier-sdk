@@ -29,6 +29,14 @@ from .user import (
     Operation,
     ChannelPermission,
 )
+from .media import (
+    StreamRequest,
+    StreamSession,
+    VideoFrame,
+    StreamState,
+    PixelFormat,
+    StreamMetrics,
+)
 
 __all__ = [
     "Device",
@@ -48,4 +56,10 @@ __all__ = [
     "Role",
     "Operation",
     "ChannelPermission",
+    "StreamRequest",
+    "StreamSession",
+    "VideoFrame",
+    "StreamState",
+    "PixelFormat",
+    "StreamMetrics",
 ]
