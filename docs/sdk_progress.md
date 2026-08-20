@@ -33,6 +33,7 @@
 | Channel Protocol Manage | ✅ | Range/Get verified on real hardware; Set implemented |
 | Channel PTZ Tasks / Schedules | ✅ | Range/Get verified on real hardware; Set implemented |
 | Channel ROI | ✅ | Range/Get verified on real hardware across 256 channels; Set implemented |
+| Channel Analog Channel | ✅ | Range/Get verified on real hardware (Pure IP mode); Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -62,6 +63,13 @@
 ---
 
 ### Module Details
+
+#### Channel Analog Channel
+- Status: Implemented
+- Range: Verified on real hardware (channel_max=256, page_type="ChannelConfig")
+- Get: Verified on real hardware (device operating in pure IP NVR mode with channel_info empty; hybrid DVR/XVR state/switch/channel_name schemas fully supported)
+- Set: Implemented, not hardware-tested
+- No analog channel switches or bindings were modified
 
 #### Channel ROI
 - Status: Implemented
