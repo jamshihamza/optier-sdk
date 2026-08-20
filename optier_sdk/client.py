@@ -23,6 +23,7 @@ from .core.auto_reboot import AutoRebootManager
 from .core.developer_mode import DeveloperModeManager
 from .core.ftp_upgrade import FtpUpgradeManager
 from .core.ipc_upgrade import IPCUpgradeManager
+from .core.ftp_ipc_upgrade import FtpIPCUpgradeManager
 from .core.log import LogManager
 from .core.system_info import SystemInfoManager
 from .core.privacy_statement import PrivacyStatementManager
@@ -210,6 +211,7 @@ class Camera:
         self.developer_mode = DeveloperModeManager(self)
         self.ftp_upgrade = FtpUpgradeManager(self)
         self.ipc_upgrade = IPCUpgradeManager(self)
+        self.ftp_ipc_upgrade = FtpIPCUpgradeManager(self)
 
         self.log = LogManager(self)
         self.system_info = SystemInfoManager(self)

@@ -53,6 +53,7 @@
 | Maintenance Developer Mode | ✅ | Range and Get verified across SSH toggles, debug outputs, and log retention |
 | Maintenance FtpUpgrade | ✅ | Range, Get, and Progress verified across FTP/HTTP online upgrade parameters |
 | Maintenance IPC Upgrade | ✅ | Range and Get verified across online IP cameras and firmware versions |
+| Maintenance IPC FTP Upgrade | ✅ | Range and Get verified across camera auto-upgrade capabilities |
 | Push Subscribe | ✅ | Get verified across 28 hardware and AI push event bitmask categories |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
@@ -80,6 +81,16 @@
 ---
 
 ### Module Details
+
+#### Maintenance IPC FTP Upgrade
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/IPCMaintaint/FtpIpcUpgrade/Range) — channel_max (256), online_upgrade (bool), ftp_auto_upgrade (bool), check_for_updates (bool), ftp_buttons (['Save', 'Refresh', 'Check', 'Upgrade']), 9 configured IPC slots
+- Get: Verified on real hardware (URI: POST /API/IPCMaintaint/FtpIpcUpgrade/Get) — Current telemetry (online_upgrade: True, ftp_auto_upgrade: False, check_for_updates: False, 9 online channels returning sup_ftp_auto_upgrade and ftp_ipc_new_ver: False)
+- Set: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/FtpIpcUpgrade/Set), not hardware-tested
+- Check: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/FtpIpcUpgrade/Check), not hardware-tested
+- Progress: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/FtpIpcUpgrade/Progress), not hardware-tested
+- Upgrade: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/FtpIpcUpgrade/Upgrade), not hardware-tested
+- Parameters verified: `channel_info`, `channel_max`, `online_upgrade`, `ftp_auto_upgrade`, `check_for_updates`, `ftp_buttons`, `check_chns`, `upgrade_chns`, `cur_ipc`, `upgrade_percent`, `upgrade_state`, `upgrade_result`, `sup_ftp_auto_upgrade`, `ftp_ipc_new_ver`
 
 #### Maintenance IPC Upgrade
 - Status: Implemented
