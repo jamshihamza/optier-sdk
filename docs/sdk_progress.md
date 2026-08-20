@@ -39,6 +39,7 @@
 | PreviewChannel Floodlight & Audio Alarm | ✅ | Get verified across active deterrence channels (horn & white light floodlight); Set implemented |
 | PreviewChannel DualTalk | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
 | PreviewChannel PTZ | ✅ | Get & Progress verified on CH3 speed dome and standard channels; Control implemented |
+| Record Search Month | ✅ | Get verified across channels, dates, and search types |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -68,6 +69,13 @@
 ---
 
 ### Module Details
+
+#### Record Search Month
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/Playback/SearchMonth/Get)
+- Calendar discovery: Discovered active recorded footage across August 2026 (days 15..20) with active record_type 3
+- Parameters verified: `channel` (array of channel names or empty array for all), `start_date` (MM/DD/YYYY), `stream_type` (Mainstream, Substream), `search_type` (Record, Picture, FD, PVD, PidLcd, Repeat, FaceAttendance)
+- Response structures verified: `is_has_rec` (31-day boolean integer array), `record_type` (31-day recording type identifier array)
 
 #### PreviewChannel
 - Status: Complete

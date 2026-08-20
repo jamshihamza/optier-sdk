@@ -51,6 +51,7 @@ from .core.floodlight_audio_alarm import FloodlightAudioAlarmManager
 from .core.dual_talk import DualTalkManager
 from .core.preview_ptz import PreviewPTZManager
 from .core.preview_channel import PreviewChannelManager
+from .core.search_month import SearchMonthManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -227,6 +228,7 @@ class Camera:
         self.dual_talk = DualTalkManager(self)
         self.preview_ptz = PreviewPTZManager(self)
         self.preview_channel = PreviewChannelManager(self)
+        self.search_month = SearchMonthManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
