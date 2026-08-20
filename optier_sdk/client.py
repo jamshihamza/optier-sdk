@@ -93,10 +93,14 @@ from .core.face_detection import FaceDetectionManager
 from .core.face_group import FaceGroupManager
 from .core.face_database import FaceDatabaseManager
 from .core.face_search import FaceSearchManager
+from .core.added_faces import AddedFacesManager
 from .core.plate_group import PlateGroupManager
 from .core.plate_database import PlateDatabaseManager
 from .core.plate_search import PlateSearchManager
+from .core.added_plates import AddedPlatesManager
 from .core.lpd import LPDManager
+from .core.fd_attendance import FDAttendanceManager
+from .core.ai_schedule import AIScheduleManager
 from .core.pedestrian_detection import PedestrianDetectionManager
 from .core.cross_counting import CrossCountingManager
 from .core.stationary_object_detection import StationaryObjectDetectionManager
@@ -299,10 +303,14 @@ class Camera:
         self.face_group = FaceGroupManager(self)
         self.face_database = FaceDatabaseManager(self)
         self.face_search = FaceSearchManager(self)
+        self.added_faces = AddedFacesManager(self)
         self.plate_group = PlateGroupManager(self)
         self.plate_database = PlateDatabaseManager(self)
         self.plate_search = PlateSearchManager(self)
+        self.added_plates = AddedPlatesManager(self)
         self.lpd = LPDManager(self)
+        self.fd_attendance = FDAttendanceManager(self)
+        self.ai_schedule = AIScheduleManager(self)
         self.pedestrian_detection = PedestrianDetectionManager(self)
         self.cross_counting = CrossCountingManager(self)
         self.stationary_object_detection = StationaryObjectDetectionManager(self)

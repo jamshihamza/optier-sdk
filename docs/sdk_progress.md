@@ -81,10 +81,14 @@
 | Face Group (Watchlists) | ✅ | Get and GetId verified across 256 channels and similarity bounds |
 | Face Database (Enrolment) | ✅ | Add, Modify, Remove, Feature extraction schema verified |
 | Face Search & Analytics | ✅ | VHD log counts, 3600+ snapshot face search, pagination, realtime alarm verified |
+| Enrolled Face Library Query | ✅ | Search, GetByIndex, GetById, GetId verified across enrolled face records |
+| Face Attendance | ✅ | Range and Get verified across Day/Week/Month shift schedules and email alerts |
 | License Plate Detection (LPD) | ✅ | Range and Get verified across 256 channels and EU_Plate formats; Set implemented |
 | License Plate Group (Watchlists) | ✅ | Get and GetId verified across Allow/Block/Unknown lists on 256 channels |
 | License Plate Database (Enrolment) | ✅ | Add, Modify, Remove, ChangeGroup schema verified |
 | License Plate Search & Forensic | ✅ | 179,000+ plate snapshot search, fuzzy matching, pagination verified |
+| Enrolled Vehicle Database Query | ✅ | GetCount, GetId, GetById verified across enrolled vehicle records |
+| AI Function Schedule | ✅ | Range and Get verified across 256 channels and scheduled function time blocks |
 | Pedestrian Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Cross Counting | ✅ | Range/Get across page_types verified; Set implemented |
 | Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
@@ -124,6 +128,34 @@
 - Get: Verified on real hardware (URI: POST /API/RecoverPassword/Authorization/Get) — Current active verification mode (Answer) and question slots ([1, 2, 3])
 - Set: Implemented per OEM documentation (URI: POST /API/RecoverPassword/Authorization/Set), not hardware-tested
 - Parameters verified: `mode`, `questions`, `enc_answers`, `answer_flag`, `email_flag`, `certificate_flag`, `super_pwd_flag`
+
+#### Enrolled Face Library Query (AddedFaces)
+- Status: Implemented
+- Search: Verified on real hardware (URI: POST /API/AI/AddedFaces/Search) — Enrolled person filter queries
+- GetByIndex: Verified on real hardware (URI: POST /API/AI/AddedFaces/GetByIndex) — Paginated face profile retrieval with portraits and eigenvalues
+- GetById & GetId: Verified on real hardware (URI: POST /API/AI/AddedFaces/{GetById,GetId})
+- Parameters verified: `StartIndex`, `count`, `SimpleInfo`, `WithImage`, `WithFeature`, `NeedMD5`, `FaceInfo`
+
+#### Face Attendance (FDAttendance)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/AI/FDAttendance/Range) — Telemetry returning supported modes (Day, Week, Month), 256 channels, 16 groups, shift times
+- Get: Verified on real hardware (URI: POST /API/AI/FDAttendance/Get) — Current active staff attendance configuration
+- Set: Implemented per OEM documentation (URI: POST /API/AI/FDAttendance/Set), not hardware-tested
+- Parameters verified: `fd_atd_info`, `enable`, `mode`, `on_duty_time`, `off_duty_time`, `working_days`, `channel`, `group`, `send_email`
+
+#### Enrolled Vehicle Database Query (AddedPlates)
+- Status: Implemented
+- GetCount: Verified on real hardware (URI: POST /API/AI/AddedPlates/GetCount) — Enrolled plate counting with group filters
+- GetId: Verified on real hardware (URI: POST /API/AI/AddedPlates/GetId) — Enrolled plate number retrieval
+- GetById: Implemented per OEM documentation (URI: POST /API/AI/AddedPlates/GetById) — Full vehicle owner profiles
+- Parameters verified: `GrpId`, `PlateInfo`, `PlatesId`
+
+#### AI Function Schedule (AISchedule)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/AI/Setup/AISchedule/Range) — Telemetry returning channel_max (256), support_copy, agreed_to_agreement
+- Get: Verified on real hardware (URI: POST /API/AI/Setup/AISchedule/Get) — Current active scheduled function time blocks across all 256 channels
+- Set: Implemented per OEM documentation (URI: POST /API/AI/Setup/AISchedule/Set), not hardware-tested
+- Parameters verified: `channel_info`, `agreed_to_agreement`
 
 #### License Plate Detection (LPD)
 - Status: Implemented
