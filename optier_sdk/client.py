@@ -83,6 +83,8 @@ from .core.osd import OSDManager
 from .core.image_control import ImageControlManager
 from .core.video_cover import VideoCoverManager
 from .core.motion_alarm import MotionAlarmManager
+from .core.combination_alarm import CombinationAlarmManager
+from .core.linkage_schedule import LinkageScheduleManager
 from .core.exception_alarm import ExceptionAlarmManager
 from .core.line_crossing_alarm import LineCrossingAlarmManager
 from .core.perimeter_intrusion_alarm import PerimeterIntrusionAlarmManager
@@ -287,6 +289,8 @@ class Camera:
         self.image_control = ImageControlManager(self)
         self.video_cover = VideoCoverManager(self)
         self.motion_alarm = MotionAlarmManager(self)
+        self.combination_alarm = CombinationAlarmManager(self)
+        self.linkage_schedule = LinkageScheduleManager(self)
         self.exception_alarm = ExceptionAlarmManager(self)
         self.line_crossing_alarm = LineCrossingAlarmManager(self)
         self.perimeter_intrusion_alarm = PerimeterIntrusionAlarmManager(self)

@@ -71,6 +71,8 @@
 | Image Control | ✅ | Range/Get verified on real hardware; Set/Default implemented |
 | Video Cover | ✅ | Range/Get verified on real hardware; Set implemented |
 | Motion Alarm | ✅ | Range/Get across page_types verified; Set implemented |
+| Combination Alarm | ✅ | Range and Get verified across 256 channels and multi-sensor joint triggers |
+| Linkage Schedule | ✅ | Range and Get verified across FloodLight and Siren deterrent schedules |
 | Exception Alarm | ✅ | Range/Get verified on real hardware; Set implemented |
 | Line Crossing Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Perimeter Intrusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
@@ -96,6 +98,20 @@
 ---
 
 ### Module Details
+
+#### Combination Alarm (Joint Multi-Sensor Linkage)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/AlarmConfig/Combination/Range) — Telemetry returning channel_max (256), support_copy (true), and capability mappings
+- Get: Verified on real hardware (URI: POST /API/AlarmConfig/Combination/Get) — Current telemetry returning all 256 channels with enable_alarm, send_email, buzzer, record_enable, and joint linkage action rules
+- Set: Implemented per OEM documentation (URI: POST /API/AlarmConfig/Combination/Set), not hardware-tested
+- Parameters verified: `channel_info`, `enable_alarm`, `combination_configure`, `alarm_out`, `latch_time`, `record_enable`, `record_channel`, `post_recording`, `send_email`, `buzzer`, `show_message`, `voice_prompts_index`, `http_listening`
+
+#### Linkage Schedule (Deterrent Timers)
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/AlarmConfig/Schedule/Range) — Supported page_types: FloodLight, Siren, EnforcerLight
+- Get: Verified on real hardware (URI: POST /API/AlarmConfig/Schedule/Get) — Current active arming/disarming schedules for deterrence peripherals
+- Set: Implemented per OEM documentation (URI: POST /API/AlarmConfig/Schedule/Set), not hardware-tested
+- Parameters verified: `page_type`, `channel_info`
 
 #### Account Rules
 - Status: Implemented
