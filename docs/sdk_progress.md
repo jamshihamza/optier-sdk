@@ -41,6 +41,7 @@
 | PreviewChannel PTZ | ✅ | Get & Progress verified on CH3 speed dome and standard channels; Control implemented |
 | Record Search Month | ✅ | Get verified across channels, dates, and search types |
 | Record Search Record | ✅ | Range and Search verified across channels, dates, and time intervals |
+| Record Picture Playback | ✅ | Search and Get verified across channels and snapshot tokens |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -70,6 +71,12 @@
 ---
 
 ### Module Details
+
+#### Record Picture Playback
+- Status: Implemented
+- Search: Verified on real hardware (URI: POST /API/Playback/Picture/Get) across single and multi-channel configurations
+- Get: Implemented per OEM documentation schemas (fetching base64 image data via `pic_info` token)
+- Parameters verified: `channel`, `start_date`, `start_time`, `end_date`, `end_time`, `record_type`, `record_type_ex`, `pic_sort`, `pic_info`
 
 #### Record Search Record
 - Status: Implemented
