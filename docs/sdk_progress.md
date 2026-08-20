@@ -54,6 +54,7 @@
 | Maintenance FtpUpgrade | ✅ | Range, Get, and Progress verified across FTP/HTTP online upgrade parameters |
 | Maintenance IPC Upgrade | ✅ | Range and Get verified across online IP cameras and firmware versions |
 | Maintenance IPC FTP Upgrade | ✅ | Range and Get verified across camera auto-upgrade capabilities |
+| Maintenance IPC Param Management | ✅ | Range and Get verified across camera parameter backup/restore endpoints |
 | Push Subscribe | ✅ | Get verified across 28 hardware and AI push event bitmask categories |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
@@ -81,6 +82,14 @@
 ---
 
 ### Module Details
+
+#### Maintenance IPC Param Management
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/IPCMaintaint/IPCParamManagement/Range) — 9 configured IPC slots with parameter status definitions and limits
+- Get: Verified on real hardware (URI: POST /API/IPCMaintaint/IPCParamManagement/Get) — Current telemetry returning all 256 channels, with 9 online IP cameras returning status (Online), IP addresses, and firmware versions
+- Export: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/IPCParamManagement/Export), not hardware-tested
+- Import: Implemented per OEM documentation (URI: POST /API/IPCMaintaint/IPCParamManagement/Import), not hardware-tested
+- Parameters verified: `channel_info`, `ImportExportSwitch`, `param`, `base_secondary_authentication`, `status`, `ip_address`, `software_version`
 
 #### Maintenance IPC FTP Upgrade
 - Status: Implemented
