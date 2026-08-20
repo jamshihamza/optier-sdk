@@ -30,6 +30,7 @@ from .core.ipc_reset import IPCResetManager
 from .core.maintenance_reset import MaintenanceResetManager
 from .core.log import LogManager
 from .core.system_info import SystemInfoManager
+from .core.record_info import RecordInfoManager
 from .core.privacy_statement import PrivacyStatementManager
 from .core.output import OutputManager
 from .core.ntp import NTPManager
@@ -224,6 +225,7 @@ class Camera:
 
         self.log = LogManager(self)
         self.system_info = SystemInfoManager(self)
+        self.record_info = RecordInfoManager(self)
         self.privacy_statement = PrivacyStatementManager(self)
         self.output = OutputManager(self)
         self.ntp = NTPManager(self)

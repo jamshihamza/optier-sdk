@@ -10,6 +10,7 @@
 | DateTime | ✅ | Complete |
 | Log | ✅ | Complete |
 | SystemInfo | ✅ | Complete |
+| Record Info | ✅ | Get verified across active recording channels and stream telemetry |
 | NTP | ✅ | Complete |
 | General | ✅ | Complete |
 | System Output | ✅ | Range and Get verified across display resolutions up to 8K |
@@ -86,6 +87,11 @@
 ---
 
 ### Module Details
+
+#### System Record Info
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/SystemInfo/Record/Get) — Current telemetry returning all 36 active recording channels with record_state (On), record_switch (Enable), stream_type (Mainstream), live resolution (2592x1944, 2880x1620, 1920x1080), fps (25Fps), and bitrate (3Mbps, 2Mbps), plus channel_max: 256
+- Parameters verified: `channel_info`, `channel_max`, `record_state`, `record_switch`, `stream_type`, `resolution`, `fps`, `bitrate`
 
 #### System Output
 - Status: Implemented
