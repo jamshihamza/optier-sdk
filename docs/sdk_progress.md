@@ -49,6 +49,7 @@
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
 | Storage Cloud | ✅ | Range and Get verified across cloud providers and overwrite retention policies |
 | Maintenance Developer Mode | ✅ | Range and Get verified across SSH toggles, debug outputs, and log retention |
+| Maintenance FtpUpgrade | ✅ | Range, Get, and Progress verified across FTP/HTTP online upgrade parameters |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
@@ -75,6 +76,16 @@
 ---
 
 ### Module Details
+
+#### Maintenance FtpUpgrade
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Maintenance/FtpUpgrade/Range) — ftp_addr (0..64 chars), ftp_port (1..65535, default 21), username (0..24 chars), user_pwd (0..24 chars), online_upgrade_tips, support_onlineupgrade_edit (True), ftp_path (0..62 chars), ftp_buttons (['Save', 'Refresh', 'Check', 'Upgrade'])
+- Get: Verified on real hardware (URI: POST /API/Maintenance/FtpUpgrade/Get) — Current telemetry (ftp_addr: '', ftp_port: 21, username: '', user_pwd_empty: True, ftp_path: '', check_for_updates: True, online_upgrade: True, Upgrade_button: False)
+- Check: Verified on real hardware (URI: POST /API/Maintenance/FtpUpgrade/Check) — Returns firmware check status
+- Progress: Verified on real hardware (URI: POST /API/Maintenance/FtpUpgrade/Progress) — Returns upgrade processing status
+- Set: Implemented, not hardware-tested
+- Upgrade: Implemented per OEM documentation (URI: POST /API/Maintenance/FtpUpgrade/Upgrade), not hardware-tested to prevent triggering firmware flashing
+- Parameters verified: `ftp_addr`, `ftp_port`, `username`, `user_pwd`, `user_pwd_empty`, `ftp_path`, `check_for_updates`, `online_upgrade`, `Upgrade_button`, `url_key`, `has_new_firmware`, `upgrade_percent`, `upgrade_state`, `upgrade_result`
 
 #### Maintenance Developer Mode
 - Status: Implemented
