@@ -3,6 +3,7 @@
 | Module | Tested | Status |
 |---------|--------|--------|
 | Login | ✅ | Complete |
+| Recover Password | ✅ | Range and Get verified across security questions and recovery email limits |
 | DeviceInfo | ✅ | Complete |
 | ChannelInfo | ✅ | Complete |
 | Snapshot | ✅ | Complete |
@@ -78,6 +79,13 @@
 ---
 
 ### Module Details
+
+#### Login Recover Password
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/RecoverPassword/Range) — answer_flag (bool), certificate_flag (bool), super_pwd_flag (bool), questions (3 slots, IDs 1..15), enc_answers (3 slots, 1..64 chars), email (1..64 chars)
+- Get: Verified on real hardware (URI: POST /API/RecoverPassword/Get) — Current telemetry (questions: [1, 2, 3])
+- Set: Implemented per OEM documentation (URI: POST /API/RecoverPassword/Set), not hardware-tested
+- Parameters verified: `questions`, `answers`, `email`, `answer_flag`, `email_flag`, `certificate_flag`, `super_pwd_flag`, `enc_answers`
 
 #### Push Subscribe
 - Status: Implemented
