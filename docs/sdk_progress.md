@@ -42,6 +42,7 @@
 | Record Search Month | ✅ | Get verified across channels, dates, and search types |
 | Record Search Record | ✅ | Range and Search verified across channels, dates, and time intervals |
 | Record Picture Playback | ✅ | Search and Get verified across channels and snapshot tokens |
+| Record Tag | ✅ | Range and Get verified across channels and timeline tags; Set implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -71,6 +72,13 @@
 ---
 
 ### Module Details
+
+#### Record Tag
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Playback/Tag/Range) — 256 channels supported, Pre-play/Post-play options (5s, 10s, 30s, 1Min, 2Min, 5Min, 10Min), Tag_name length constraints (1..39 characters)
+- Get: Verified on real hardware (URI: POST /API/Playback/Tag/Get) across single and multi-channel search queries
+- Set: Implemented per OEM documentation (operations: 0=Set/Add, 1=Delete, 2=Rename), not hardware-tested to prevent modifying device metadata
+- Parameters verified: `channel`, `start_date`, `start_time`, `end_date`, `end_time`, `Keyword`, `Tag_name`, `Tag_date`, `Tag_time`, `label_id`, `record_id`, `operate`
 
 #### Record Picture Playback
 - Status: Implemented
