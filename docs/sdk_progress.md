@@ -37,6 +37,7 @@
 | PreviewChannel Manual Alarm | ✅ | Get verified across 10 physical and digital alarm outputs; Set implemented |
 | PreviewChannel Floodlight & Audio Alarm | ✅ | Get verified across active deterrence channels (horn & white light floodlight); Set implemented |
 | PreviewChannel DualTalk | ⚠️ | Implemented per OEM spec (returns "not_found" on NVR) |
+| PreviewChannel PTZ | ✅ | Get & Progress verified on CH3 speed dome and standard channels; Control implemented |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -66,6 +67,13 @@
 ---
 
 ### Module Details
+
+#### PreviewChannel PTZ
+- Status: Implemented
+- Get: Verified on real hardware on CH3 motorized optical speed dome (255 preset point slots, watch mode, line scan area, speed, cruise modes, tour tracks, pattern scans) and standard fixed channels
+- Progress: Verified on real hardware (`/API/PreviewChannel/PTZ/Control/Progress` returning `zoom_slider`, `focus_slider`, `isctl: True`)
+- Control: Implemented, not hardware-tested
+- No PTZ directional movements, zoom/focus alterations, or presets were triggered during verification
 
 #### PreviewChannel DualTalk
 - Status: Implemented
