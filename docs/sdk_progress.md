@@ -74,6 +74,9 @@
 | Perimeter Intrusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Occlusion Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Face Detection | ✅ | Range/Get across page_types verified; Set implemented |
+| Face Group (Watchlists) | ✅ | Get and GetId verified across 256 channels and similarity bounds |
+| Face Database (Enrolment) | ✅ | Add, Modify, Remove, Feature extraction schema verified |
+| Face Search & Analytics | ✅ | VHD log counts, 3600+ snapshot face search, pagination, realtime alarm verified |
 | Pedestrian Detection | ✅ | Range/Get across page_types verified; Set implemented |
 | Cross Counting | ✅ | Range/Get across page_types verified; Set implemented |
 | Stationary Object Detection | ✅ | Range/Get across page_types verified; Set implemented |
@@ -87,6 +90,26 @@
 ---
 
 ### Module Details
+
+#### Face Group (Watchlists & FDGroup)
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/AI/FDGroup/Get) — Telemetry returning channel bounds (256 channels), similarity limits (0..100, default 70), SupportAI status, and configured watchlist groups
+- GetId: Verified on real hardware (URI: POST /API/AI/FDGroup/GetId) — Next available group ID calculation
+- Add, Modify, Remove, Change: Implemented per OEM documentation (URI: POST /API/AI/FDGroup/{Action})
+- Parameters verified: `Group`, `Id`, `Name`, `DetectType`, `Similarity`, `Policy`, `Enabled`, `PolicyConfigs`, `SupportAI`, `channel`, `param_limit`
+
+#### Face Database (Enrolment & Profiles)
+- Status: Implemented
+- Add, Modify, Remove, GetImagesFeature: Implemented per OEM documentation (URI: POST /API/AI/Faces/{Action})
+- Features supported: Enrolling persons with name, sex, age, ID code, phone, email, domicile, remark, and Base64 portrait photos (`Image1`), with automatic facial eigenvalue vector calculation
+
+#### Face Search & Forensic Match
+- Status: Implemented
+- VHD Log Count: Verified on real hardware (URI: POST /API/AI/VhdLogCount/Get) — Returning counts across object types (3650+ face events logged)
+- Search: Verified on real hardware (URI: POST /API/AI/SnapedFaces/Search) — Executing time-ranged forensic face searches across channels
+- GetByIndex: Verified on real hardware (URI: POST /API/AI/SnapedFaces/GetByIndex) — Paginated retrieval of snapshot face metadata (UUID, channel, SnapId, score, timestamps)
+- Realtime Alarm: Verified on real hardware (URI: POST /API/AI/processAlarm/Get) — Real-time AI cross-counting and face event polling
+- StopSearch & GetById: Implemented per OEM documentation
 
 #### System Record Info
 - Status: Implemented

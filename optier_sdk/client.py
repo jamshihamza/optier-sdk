@@ -86,6 +86,9 @@ from .core.line_crossing_alarm import LineCrossingAlarmManager
 from .core.perimeter_intrusion_alarm import PerimeterIntrusionAlarmManager
 from .core.occlusion_alarm import OcclusionAlarmManager
 from .core.face_detection import FaceDetectionManager
+from .core.face_group import FaceGroupManager
+from .core.face_database import FaceDatabaseManager
+from .core.face_search import FaceSearchManager
 from .core.pedestrian_detection import PedestrianDetectionManager
 from .core.cross_counting import CrossCountingManager
 from .core.stationary_object_detection import StationaryObjectDetectionManager
@@ -281,6 +284,9 @@ class Camera:
         self.perimeter_intrusion_alarm = PerimeterIntrusionAlarmManager(self)
         self.occlusion_alarm = OcclusionAlarmManager(self)
         self.face_detection = FaceDetectionManager(self)
+        self.face_group = FaceGroupManager(self)
+        self.face_database = FaceDatabaseManager(self)
+        self.face_search = FaceSearchManager(self)
         self.pedestrian_detection = PedestrianDetectionManager(self)
         self.cross_counting = CrossCountingManager(self)
         self.stationary_object_detection = StationaryObjectDetectionManager(self)
@@ -522,8 +528,16 @@ class Camera:
         """
 
         if (
-            response_json.get(JSON_KEY_RESULT)
-            == JSON_RESULT_SUCCESS
+            response_json.get(JSON_KEY_RESULT) == JSON_RESULT_SUCCESS
+            or (
+                isinstance(response_json.get("data"), dict)
+                and response_json.get("data", {}).get("Result") == 0
+            )
+            or (
+                "error_code" not in response_json
+                and JSON_KEY_RESULT not in response_json
+                and "data" in response_json
+            )
         ):
             return
 
