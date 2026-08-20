@@ -59,6 +59,7 @@ from .core.playback_page import PlaybackPageManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
+from .core.storage_cloud import StorageCloudManager
 from .core.channel_info import SystemChannelInfoManager
 from .core.output import OutputManager
 from .core.dst import DSTManager
@@ -240,6 +241,7 @@ class Camera:
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
+        self.storage_cloud = StorageCloudManager(self)
         self.channel_info = SystemChannelInfoManager(self)
         self.output = OutputManager(self)
         self.dst = DSTManager(self)

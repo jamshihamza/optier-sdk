@@ -47,6 +47,7 @@
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
+| Storage Cloud | ✅ | Range and Get verified across cloud providers and overwrite retention policies |
 | DST | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Auto Reboot | ✅ | Range/Get verified on real hardware, Set implemented but not hardware-tested |
 | Stream Encode | ✅ | MainStream, SubStream, MobileStream verified; EventStream unsupported; Set implemented |
@@ -73,6 +74,15 @@
 ---
 
 ### Module Details
+
+#### Storage Cloud
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/StorageConfig/Cloud/Range) — Cloud types (DROPBOX, Google Drive), status states (Activated, CloudFull, Unactivated, NetworkBlocked, Disabled), overwrite policies (OFF, Auto, 1Day, 3Days, 7Days, 14Days, 30Days, 90Days), video types (RF, AVI, MP4), and 256-channel folder mapping constraints
+- Get: Verified on real hardware (URI: POST /API/StorageConfig/Cloud/Get) — Current telemetry (cloud_storage: False, cloud_type: DROPBOX, cloud_status: Unactivated, overwrite: Auto, video_type: MP4, 36 channel folder mappings)
+- Set: Implemented, not hardware-tested
+- Control: Implemented per OEM documentation (OAuth auth URL generator)
+- AccessToken: Implemented per OEM documentation (POST /API/action/accesstoken)
+- Parameters verified: `cloud_storage`, `cloud_type`, `cloud_status`, `total_size`, `used_size`, `progress`, `cloud_over_write`, `video_type`, `channel_info`, `accesstoken`
 
 #### Record Playback Page
 - Status: Implemented
