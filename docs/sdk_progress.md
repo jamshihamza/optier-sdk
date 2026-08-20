@@ -11,6 +11,7 @@
 | SystemInfo | ✅ | Complete |
 | NTP | ✅ | Complete |
 | General | ✅ | Complete |
+| Privacy Statement | ✅ | Range and Get verified on real hardware |
 | Network State | ✅ | Complete |
 | Network Base | ✅ | Range/Get & page_type verified; Set implemented |
 | Network ONVIF | ✅ | Range/Get verified on real hardware; Set implemented |
@@ -76,6 +77,12 @@
 ---
 
 ### Module Details
+
+#### System Privacy Statement
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/SystemConfig/Statement/Range) — statement_file_name length limits (1..48 chars)
+- Get: Verified on real hardware (URI: POST /API/SystemConfig/Statement/Get) — Current telemetry (statement_file_name: 'privacy_statement')
+- Parameters verified: `statement_file_name`
 
 #### Maintenance FtpUpgrade
 - Status: Implemented
