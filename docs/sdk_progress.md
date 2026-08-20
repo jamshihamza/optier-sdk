@@ -3,7 +3,9 @@
 | Module | Tested | Status |
 |---------|--------|--------|
 | Login | ✅ | Complete |
+| Account Rules | ✅ | Get verified across username/password complexity and policy rules |
 | Recover Password | ✅ | Range and Get verified across security questions and recovery email limits |
+| Password Authorization | ✅ | Range and Get verified across recovery verification challenge modes |
 | DeviceInfo | ✅ | Complete |
 | ChannelInfo | ✅ | Complete |
 | Snapshot | ✅ | Complete |
@@ -94,6 +96,18 @@
 ---
 
 ### Module Details
+
+#### Account Rules
+- Status: Implemented
+- Get: Verified on real hardware (URI: POST /API/AccountRules/Get) — Current telemetry returning username, password, password_modify_ipc, password_activation rules, character class requirements (ALPHA, alpha, digit, special), and min/max length constraints
+- Parameters verified: `username`, `password`, `password_modify_ipc`, `password_activation`, `min_length`, `max_length`, `character_combinations_num`, `special`, `not_same_username`
+
+#### Password Authorization
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/RecoverPassword/Authorization/Range) — Telemetry returning supported recovery modes (Answer), 15 question options, and enc_answers constraints
+- Get: Verified on real hardware (URI: POST /API/RecoverPassword/Authorization/Get) — Current active verification mode (Answer) and question slots ([1, 2, 3])
+- Set: Implemented per OEM documentation (URI: POST /API/RecoverPassword/Authorization/Set), not hardware-tested
+- Parameters verified: `mode`, `questions`, `enc_answers`, `answer_flag`, `email_flag`, `certificate_flag`, `super_pwd_flag`
 
 #### License Plate Detection (LPD)
 - Status: Implemented

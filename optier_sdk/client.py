@@ -14,7 +14,9 @@ from typing import Any
 import requests
 from requests.auth import HTTPDigestAuth
 from .core.login import LoginManager
+from .core.account_rules import AccountRulesManager
 from .core.recover_password import RecoverPasswordManager
+from .core.password_authorization import PasswordAuthorizationManager
 from .core.system import SystemManager
 from .core.snapshot import SnapshotManager
 from .core.datetime import DateTimeManager
@@ -214,7 +216,9 @@ class Camera:
         #
 
         self.login = LoginManager(self)
+        self.account_rules = AccountRulesManager(self)
         self.recover_password = RecoverPasswordManager(self)
+        self.password_authorization = PasswordAuthorizationManager(self)
         self.system = SystemManager(self)
         self.snapshot = SnapshotManager(self)
         self.datetime = DateTimeManager(self)
