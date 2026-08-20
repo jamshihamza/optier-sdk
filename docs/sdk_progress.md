@@ -43,6 +43,7 @@
 | Record Search Record | ✅ | Range and Search verified across channels, dates, and time intervals |
 | Record Picture Playback | ✅ | Search and Get verified across channels and snapshot tokens |
 | Record Tag | ✅ | Range and Get verified across channels and timeline tags; Set implemented |
+| Record Playback Page | ✅ | Range verified across all 8 playback modalities and color bitmasks |
 | Record Information | ✅ | Complete |
 | Record Configuration | ✅ | Range/Get verified on real hardware; Set implemented |
 | Disk | ✅ | Range/Get verified on real hardware; Set/Control/Format implemented |
@@ -72,6 +73,20 @@
 ---
 
 ### Module Details
+
+#### Record Playback Page
+- Status: Implemented
+- Range: Verified on real hardware (URI: POST /API/Playback/PlaybackPage/Range) across all playback modalities: Normal, Smart, Picture, HumanVehicle, PidLcd, LicensePlate, supportFaceAttr, FaceAttendance, and param_limit
+- Playback event bitmask telemetry discovered and verified:
+  - normal: 1 (0x1)
+  - alarm: 2 (0x2)
+  - motion: 4 (0x4)
+  - IO: 8 (0x8)
+  - ai: 128 (0x80)
+  - manual: 16384 (0x4000)
+  - PIR: 65536 (0x10000)
+  - ANR: 134217728 (0x8000000)
+- Face Attendance work schedule discovered and verified: working_days ('Mon.'..'Sat.'), on_duty_time ('09:00:00'), off_duty_time ('17:00:00')
 
 #### Record Tag
 - Status: Implemented

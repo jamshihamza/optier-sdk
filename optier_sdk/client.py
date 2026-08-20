@@ -55,6 +55,7 @@ from .core.search_month import SearchMonthManager
 from .core.search_record import SearchRecordManager
 from .core.picture_playback import PicturePlaybackManager
 from .core.record_tag import RecordTagManager
+from .core.playback_page import PlaybackPageManager
 from .core.record_info import RecordInfoManager
 from .core.record_config import RecordConfigManager
 from .core.disk import DiskManager
@@ -235,6 +236,7 @@ class Camera:
         self.search_record = SearchRecordManager(self)
         self.picture_playback = PicturePlaybackManager(self)
         self.record_tag = RecordTagManager(self)
+        self.playback_page = PlaybackPageManager(self)
         self.record_info = RecordInfoManager(self)
         self.record_config = RecordConfigManager(self)
         self.disk = DiskManager(self)
